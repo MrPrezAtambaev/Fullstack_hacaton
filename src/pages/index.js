@@ -1,3 +1,14 @@
+import AuthContextProvider from "@/context/authContext";
+import Layout from "../components/layout";
+
 export default function Index() {
-  return <h1>Hello World</h1>;
+  return (
+    <>
+      <AuthContextProvider>
+        <Layout>
+          <h1>Hello world</h1>
+        </Layout>
+      </AuthContextProvider>
+    </>
+  );
 }
