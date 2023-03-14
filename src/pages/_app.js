@@ -4,9 +4,9 @@ import global from '../../styles/global.scss'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AuthContextProvider>
+    <Layout>
       <Component {...pageProps} />
-    </AuthContextProvider>
+    </Layout>
   );
 }
 
