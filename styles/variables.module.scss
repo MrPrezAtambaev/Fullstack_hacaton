@@ -1,0 +1,111 @@
+$color: #333;
+
+.navbar{
+    background-color: rgba(24, 24, 24, 0);
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    transition: 0.6s;
+    padding: 30px 0px;
+    z-index: 10000;
+    & li{
+        position: relative;
+        list-style: none;
+    }
+}
+#sticky{
+    background: rgba(0, 0, 0, 0.7);
+    transition: all 0.5s;
+    opacity: 1;
+}
+
+
+
+.logo{
+    position: relative;
+    font-weight: 700;
+    color: rgb(220, 220, 220);
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity:0; /*Элемент полностью прозрачный (невидимый)*/
+    transition: 0.3s; /*Скорость перехода состояния элемента*/
+    animation: show 3s 1; /* Указываем название анимации, её время и количество повторов*/
+    animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
+    animation-delay: 0s; /* Задержка перед началом */
+}
+
+@keyframes show{
+    0%{
+    opacity:0;
+    }
+    100% {
+    opacity:1;
+    }
+}
+
+.ul{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity:0; /*Элемент полностью прозрачный (невидимый)*/
+    transition: 0.3s; /*Скорость перехода состояния элемента*/
+    animation: show 3s 1; /* Указываем название анимации, её время и количество повторов*/
+    animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
+    animation-delay: 0s; /* Задержка перед началом */
+}
+
+// .navbar li{
+//     position: relative;
+//     list-style: none;
+// }
+.a{
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgb(220, 220, 220);
+    letter-spacing: 2px;
+    font-weight: 500px;
+    font-size: 20px;
+    transition: 0.6s;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+// .a:hover{
+//     cursor: pointer;
+//     color: #c6c6ca;
+//   }
+
+.banner{
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    background: url(https://preview.colorlib.com/theme/animalshelter/img/banner-bg.jpg.webp);
+    
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    &::before{
+        content: "";
+        position: absolute;
+        background: rgba(0, 0, 0, 0.521);
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+}
+// .banner::before{
+//     content: "";
+//     position: absolute;
+//     background: rgba(0, 0, 0, 0.521);
+//     width: 100%;
+//     height: 100%;
+//     z-index: -1;
+//   }
+
