@@ -12,7 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/router";
 
-export default function header() {
+export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
