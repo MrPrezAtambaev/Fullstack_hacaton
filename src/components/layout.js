@@ -10,6 +10,11 @@ const Layout = ({ children, title = "KAINAR" }) => {
       <nav>
         <Head>
           <title>{title} | MAKERS </title>
+          <link
+            rel="shortcut icon"
+            href="../../../icons/logo.png"
+            type="image/x-icon"
+          />
         </Head>
         <Header />
         <main>{children}</main>
