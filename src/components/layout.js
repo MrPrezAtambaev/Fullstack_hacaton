@@ -12,14 +12,14 @@ const Layout = ({ children, title = "KAINAR" }) => {
           <title>{title} | MAKERS </title>
           <link
             rel="shortcut icon"
-            href="../../../icons/logo.png"
+            href=".././public/icons/logo.png"
             type="image/x-icon"
           />
         </Head>
         <Header />
-        <main>{children}</main>
-        <Footer />
       </nav>
+      <main>{children}</main>
+      <Footer />
     </AuthContextProvider>
   );
 };
