@@ -5,9 +5,7 @@ export default function Index() {
   return (
     <>
       <AuthContextProvider>
-        <Layout>
-          <h1>Hello world</h1>
-        </Layout>
+        <h1>Hello world</h1>
       </AuthContextProvider>
     </>
   );
