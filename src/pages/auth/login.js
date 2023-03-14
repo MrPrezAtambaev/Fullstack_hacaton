@@ -24,7 +24,7 @@ const Login = () => {
     <h2>{error}</h2>
   ) : (
     <div>
-      <h2>Login Page</h2>
+      <h2 style={{ marginBottom: "90px" }}>Login Page</h2>
       <input
         type="text"
         placeholder="Email"

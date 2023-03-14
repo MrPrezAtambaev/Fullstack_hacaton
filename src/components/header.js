@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from "react";
 import variables from "../../styles/variables.module.scss";
+import Link from "next/link";
 
 //MUI
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import { useRouter } from "next/router";
 
 export default function header() {
@@ -70,25 +65,20 @@ export default function header() {
         className={variables.navbar}
         id={`${isSticky ? variables.sticky : ""}`}
       >
-        <a href="#" className={variables.logo}>
-          Кайнар
-        </a>
+        <a className={variables.logo}>Кайнар</a>
         <ul className={variables.ul}>
           <li>
-            <a href="$" className={variables.a}>
-              {" "}
-              Главная
-            </a>
+            <Link href="/" legacyBehavior>
+              <a className={variables.a}> Главная</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/about" legacyBehavior>
+              <a className={variables.a}> О Нас</a>
+            </Link>
           </li>
           <li>
             <a href="$" className={variables.a}>
-              {" "}
-              О Нас
-            </a>
-          </li>
-          <li>
-            <a href="$" className={variables.a}>
-              {" "}
               Контакты
             </a>
           </li>

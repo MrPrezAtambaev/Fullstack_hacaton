@@ -33,7 +33,7 @@ const Register = () => {
 
   return (
     <div>
-      <h2>Register</h2>
+      <h2 style={{ marginBottom: "90px" }}>Register</h2>
       {error ? <h2>{error}</h2> : null}
       <input
         type="text"

@@ -1,0 +1,329 @@
+.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aboutContent {
+    margin-top: 70px;
+    padding: 120px 0;
+    text-align: center;
+    .home {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+    }
+    .about {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+    }
+    .icon {
+        margin: -5px 10px;
+        font-weight: 600;
+    }
+}
+
+.aboutText {
+    font-size: 48px;
+    font-weight: 600;
+    color: white;
+}
+
+.aboutLinks {
+    color: white;
+    margin-top: 10px;
+}
+
+.videoArea {
+    text-align: center;
+    padding-top: 100px;
+}
+
+.homeAbout {
+    margin-bottom: 100px;
+}
+
+.contain {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.photoArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-right: -55px;
+    margin-left: -55px;
+}
+
+.picture {
+    background: url('https://preview.colorlib.com/theme/animalshelter/img/video-bg.jpg.webp') no-repeat center;
+    background-size: cover;
+    height: 370px;
+}
+.playBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.desc {
+    width: 95%;
+    .desc1 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    width: 95%;
+    color: #000;
+    &::selection {
+        background-color: #fab700;
+        color: #fff;
+        }
+    }
+}
+    
+.desc2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    &::selection {
+        background-color: #fab700;
+        color: #fff;
+    }
+}
+
+.padd{
+    width: 55%;
+}
+
+.fav {
+    padding: 120px 0;
+}
+.row {
+    width: 80%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 142px;
+    margin-left: 142px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    // margin-left: -15px;
+    // margin-right: -15px;
+    background-color: #f9f9ff;
+    .favPet {
+        text-align: left;
+        & .select {
+            margin-left: 20px;
+            color: #000;
+            &::selection {
+                background-color: #fab700;
+                color: #fff;
+            }
+        }
+    }
+    .fillBtn {
+        text-align: right;
+        & .yellowBtn {
+            margin-right: 20px;
+        }
+    }
+}
+.yellowBtn {
+    background-color: #fab700;
+    line-height: 42px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid transparent;
+    color: #fff;
+    display: inline-block;
+    font-weight: 500;
+    position: relative;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+.fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.all {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.leftPage {
+    padding: 0;
+    display: flex;
+    flex: 0 0 50%;
+    .img {
+        width: 100%;
+    }
+}
+.rightPage {
+    padding-right: 20%;
+    padding-left: 4%;
+    width: 60%;
+    .globally {
+      padding: 20px 0;
+      font-size: 36px;
+      margin: 0;
+      color: #000;
+      line-height: 1;
+      &::selection {
+        background-color: #fab700;
+        color: #fff;
+      }
+    }
+    .ash {
+      margin-bottom: 20px;
+      margin-top: 0;
+      font-weight: 300;
+      font-size: medium;
+      &::selection {
+        background-color: #fab700;
+        color: #fff;
+      }
+    }
+  }
+  
+.paragh {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    &::selection {
+        background-color: #fab700;
+        color: #fff;
+      }
+}
+
+.detailsBtn {
+    background-color: #fab700;
+    line-height: 42px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid transparent;
+    color: #fff;
+    display: inline-block;
+    font-weight: 500;
+    position: relative;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.valonters {
+    padding: 120px 0;
+    background: url('https://preview.colorlib.com/theme/animalshelter/img/call-bg.jpg.webp') center;
+    background-size: cover;
+    text-align: center;
+    .overplayBg{
+        background-color: rgba(250, 183, 0, 0.75);
+        z-index: 0;
+        position: absolute;
+        top: 69.6%;
+        bottom: 14.3%;
+        right: 0;
+        left: 0;
+    }
+    .lorem {
+        margin: 20px 0;
+        width: 50%;
+        display: inline-block;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        z-index: 50;
+    }
+    ::selection {
+        background-color: #fab700;
+        color: #fff;
+    }
+    .pdf {
+        background-color: #fff;
+        margin: 10px;
+        color: #222;
+    }
+    .register {
+        background-color: #fff;
+        margin: 10px;
+        color: #222;
+    }
+}
+
+.cont {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.rove {
+    // display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    z-index: 3;
+}
+
+.help { 
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    line-height: 1.2em !important;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-weight: 600;
+    font-size: 36px;
+    position: relative;
+    z-index: 6;
+}
+
+.Btn {
+    z-index: 5;
+}
+.pdf {
+    line-height: 42px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid transparent;
+    color: #fff;
+    display: inline-block;
+    font-weight: 500;
+    position: relative;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.register{
+    line-height: 42px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid transparent;
+    color: #fff;
+    display: inline-block;
+    font-weight: 500;
+    position: relative;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    text-transform: uppercase;
+}

@@ -8,7 +8,7 @@ $color: #333;
     align-items: center;
     position: fixed;
     transition: 0.6s;
-    padding: 30px 0px;
+    padding: 0px 0px;
     z-index: 10000;
     & li{
         position: relative;
@@ -18,7 +18,7 @@ $color: #333;
 #sticky{
     background: rgba(0, 0, 0, 0.7);
     transition: all 0.5s;
-    opacity: 1;
+    opacity: 0.8;
 }
 
 
@@ -108,4 +108,3 @@ $color: #333;
 //     height: 100%;
 //     z-index: -1;
 //   }
-

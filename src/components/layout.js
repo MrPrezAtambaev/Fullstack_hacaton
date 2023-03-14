@@ -15,6 +15,10 @@ const Layout = ({ children, title = "KAINAR" }) => {
             href=".././public/icons/logo.png"
             type="image/x-icon"
           />
+          <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <Header />
       </nav>
