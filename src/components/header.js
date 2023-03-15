@@ -88,6 +88,8 @@ export default function header() {
               Волонтёры
             </a>
           </li>
+          <li>
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Account">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -109,7 +111,7 @@ export default function header() {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
-            >
+              >
               {settings.map((setting) => (
                 <MenuItem key={setting.type} onClick={handleCloseUserMenu}>
                   <Typography
@@ -125,6 +127,7 @@ export default function header() {
               </MenuItem>
             </Menu>
           </Box>
+              </li>
         </ul>
       </div>
       <div className="banner"></div>
