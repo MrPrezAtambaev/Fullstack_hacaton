@@ -16,6 +16,8 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.12",
     "@mui/styled-engine-sc": "^5.11.11",
+    "2gis-maps": "^3.7.3",
+    "2gis-maps-react": "^0.0.4",
     "axios": "^1.3.4",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
@@ -28,6 +30,8 @@
     "styled-components": "^5.3.8"
   },
   "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-runtime": "^6.26.0",
     "sass": "^1.59.2"
   }
 }

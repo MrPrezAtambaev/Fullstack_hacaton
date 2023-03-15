@@ -12,7 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/router";
 
-export default function header() {
+export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -78,15 +78,19 @@ export default function header() {
             </Link>
           </li>
           <li>
-            <a href="$" className={variables.a}>
-              Контакты
-            </a>
+            <Link href="/contact" legacyBehavior>
+              <a className={variables.a}>Контакты</a>
+            </Link>
           </li>
           <li>
-            <a href="$" className={variables.a}>
-              {" "}
-              Волонтёры
-            </a>
+            <Link href="/valonters" legacyBehavior>
+              <a className={variables.a}>Волонтеры</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/blog" legacyBehavior>
+              <a className={variables.a}>Блог</a>
+            </Link>
           </li>
           <li>
 
