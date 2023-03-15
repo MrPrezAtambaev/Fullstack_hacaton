@@ -78,15 +78,19 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <a href="$" className={variables.a}>
-              Контакты
-            </a>
+            <Link href="/contact" legacyBehavior>
+              <a className={variables.a}>Контакты</a>
+            </Link>
           </li>
           <li>
-            <a href="$" className={variables.a}>
-              {" "}
-              Волонтёры
-            </a>
+            <Link href="/valonters" legacyBehavior>
+              <a className={variables.a}>Волонтеры</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/blog" legacyBehavior>
+              <a className={variables.a}>Блог</a>
+            </Link>
           </li>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Account">

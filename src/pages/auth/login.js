@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { authContext } from "@/context/authContext";
-import Layout from "@/components/layout";
+import reg from "../../../styles/reg.module.scss";
+import variables from "../../../styles/variables.module.scss";
+import about from "../../../styles/about.module.scss";
+import Link from "next/link";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const Login = () => {
   const router = useRouter();
@@ -23,20 +27,55 @@ const Login = () => {
   return error ? (
     <h2>{error}</h2>
   ) : (
-    <div>
-      <h2 style={{ marginBottom: "90px" }}>Login Page</h2>
-      <input
-        type="text"
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleAuth}>Login</button>
-    </div>
+    <>
+      <div className={variables.banner}>
+        <div className={about.text}>
+          <div className={about.aboutContent}>
+            <h1 className={about.aboutText}>About Us</h1>
+            <p className={about.aboutLinks}>
+              <Link href="/" legacyBehavior>
+                <a className={about.home}>Home</a>
+              </Link>
+              <ArrowForwardIcon className={about.icon} />
+              <Link href="/" legacyBehavior>
+                <a className={about.about}>About</a>
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className={reg.background}>
+        <div className={reg.shape}></div>
+        <div className={reg.shape}></div>
+      </div>
+      <form className={reg.form} style={{ height: "500px" }}>
+        <h3>Login</h3>
+        <label htmlFor="username" className={reg.label}>
+          Email
+        </label>
+        <input
+          type="text"
+          placeholder="Email"
+          id="username"
+          className={reg.input}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <label htmlFor="password" className={reg.label}>
+          Password
+        </label>
+        <input
+          type="password"
+          placeholder="Password"
+          id="password"
+          className={reg.input}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button className={reg.button} onClick={handleAuth}>
+          Log In
+        </button>
+      </form>
+    </>
   );
 };
 
