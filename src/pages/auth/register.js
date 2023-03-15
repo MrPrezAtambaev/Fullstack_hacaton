@@ -19,7 +19,8 @@ const Register = () => {
     setError(false);
   }, []);
 
-  function handleSave() {
+  function handleSave(e) {
+    e.preventDefault();
     if (!email.trim() || !password.trim() || !passwordConfirm.trim()) {
       alert("Some inputs are empty!");
       return;
@@ -28,7 +29,7 @@ const Register = () => {
     formData.append("email", email);
     formData.append("password", password);
     formData.append("password2", passwordConfirm);
-    handleRegister(formData, router);
+    handleRegister(formData);
   }
 
   return (
@@ -36,15 +37,11 @@ const Register = () => {
       <div className={variables.banner}>
         <div className={about.text}>
           <div className={about.aboutContent}>
-            <h1 className={about.aboutText}>About Us</h1>
+            <h1 className={about.aboutText}>Register</h1>
             <p className={about.aboutLinks}>
-              <Link href="/" legacyBehavior>
+              {/* <Link href="/" legacyBehavior>
                 <a className={about.home}>Home</a>
-              </Link>
-              <ArrowForwardIcon className={about.icon} />
-              <Link href="/" legacyBehavior>
-                <a className={about.about}>About</a>
-              </Link>
+              </Link> */}
             </p>
           </div>
         </div>
@@ -63,7 +60,6 @@ const Register = () => {
         <input
           type="text"
           placeholder="Email or Phone"
-          id="username"
           className={reg.input}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -72,9 +68,8 @@ const Register = () => {
           Password
         </label>
         <input
-          type="password"
+          type="text"
           placeholder="Password"
-          id="password"
           className={reg.input}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -83,9 +78,8 @@ const Register = () => {
           Password Comfirm
         </label>
         <input
-          type="password"
+          type="text"
           placeholder="Password Confirm"
-          id="password"
           className={reg.input}
           onChange={(e) => setPasswordConfirm(e.target.value)}
         />
@@ -93,14 +87,6 @@ const Register = () => {
         <button className={reg.button} onClick={handleSave}>
           Register
         </button>
-        <div className={reg.social}>
-          <div className={reg.go}>
-            {/* <i className="fab fa-google"></i> Google */}
-          </div>
-          <div className={reg.fb}>
-            {/* <i className="fab fa-facebook"></i> Facebook */}
-          </div>
-        </div>
       </form>
     </>
   );

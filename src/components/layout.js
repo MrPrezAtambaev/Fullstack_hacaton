@@ -9,6 +9,7 @@ const Layout = ({ children, title = "KAINAR" }) => {
     <AuthContextProvider>
       <nav>
         <Head>
+          <meta charset="utf-8" />
           <title>{title} | MAKERS </title>
           <link
             rel="shortcut icon"

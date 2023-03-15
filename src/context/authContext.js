@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
+import { Redirect } from "next";
 
 export const authContext = React.createContext();
 
@@ -10,7 +12,9 @@ const AuthContextProvider = ({ children }) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  async function handleRegister(formData, router) {
+  const router = useRouter();
+
+  async function handleRegister(formData) {
     setLoading(true);
     try {
       const res = await axios.post(`${API}/account/register/`, formData);

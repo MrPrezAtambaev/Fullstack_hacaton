@@ -1,9 +1,113 @@
-import Map from "@/components/maps";
+import Link from "next/link";
+import about from "../../styles/about.module.scss";
+import variables from "../../styles/variables.module.scss";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import contact from "../../styles/contact.module.scss";
+import CottageOutlinedIcon from "@mui/icons-material/CottageOutlined";
+import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 
 export default function Contact() {
+  const mapStyles = {
+    height: "70vh",
+    width: "80%",
+    marginLeft: "10%",
+    marginBottom: "20px",
+    marginTop: "20px",
+    marginRight: "20%",
+  };
+
+  const defaultCenter = {
+    lat: 42.941767,
+    lng: 74.591825,
+  };
   return (
-    <div>
-      <h1>2GIS Map Example</h1>
-    </div>
+    <>
+      <div className={variables.banner}>
+        <div className={about.text}>
+          <div className={about.aboutContent}>
+            <h1 className={about.aboutText}>Contact</h1>
+            <p className={about.aboutLinks}>
+              <Link href="/" legacyBehavior>
+                <a className={about.home}>Home</a>
+              </Link>
+              <ArrowForwardIcon className={about.icon} />
+              <Link href="/contact" legacyBehavior>
+                <a className={about.about}>Contact</a>
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+      <section className={contact.sect}>
+        <LoadScript googleMapsApiKey="AIzaSyCfr2nJWlKRb7loxHs-gtxbYqMJVtNFrKc">
+          <GoogleMap
+            mapContainerStyle={mapStyles}
+            zoom={13}
+            center={defaultCenter}
+          >
+            <Marker position={{ lat: 42.941767, lng: 74.591825 }} />
+          </GoogleMap>
+        </LoadScript>
+        <div className={contact.all}>
+          <div className={contact.address}>
+            <div className={contact.single}>
+              <CottageOutlinedIcon className={contact.icon} />
+              <div className={contact.details}>
+                <h5 className={contact.h5}>Binghamton, New York</h5>
+                <p className={contact.p}>4343 Hinkle Deegan Lake Road</p>
+              </div>
+            </div>
+            <div className={contact.single}>
+              <LocalPhoneOutlinedIcon className={contact.icon} />
+              <div className={contact.details}>
+                <h5 className={contact.h5}>00 (953) 9865 562</h5>
+                <p className={contact.p}>Mon to Fri 9am to 6 pm</p>
+              </div>
+            </div>
+            <div className={contact.single}>
+              <EmailOutlinedIcon className={contact.icon} />
+              <div className={contact.details}>
+                <h5 className={contact.h5}>support@colorlib.com</h5>
+                <p className={contact.p}>Send us your query anytime!</p>
+              </div>
+            </div>
+          </div>
+          <div className={contact.form}>
+            <form className={contact.group}>
+              <div className={contact.row}>
+                <div className={contact.left}>
+                  <input
+                    type="text"
+                    placeholder="Enter your name"
+                    className={contact.input}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Enter email address"
+                    className={contact.input}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Enter your subject"
+                    className={contact.input}
+                  />
+                </div>
+                <div className={contact.right}>
+                  <textarea
+                    className={contact.textarea}
+                    placeholder="Message"
+                  />
+                </div>
+                <div className={contact.btn}>
+                  <button className={contact.send}>Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
