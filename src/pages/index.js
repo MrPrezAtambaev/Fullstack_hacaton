@@ -1,4 +1,3 @@
-
 import AuthContextProvider from "@/context/authContext";
 import Layout from "../components/layout";
 import Navbar from "../components/header";
@@ -6,13 +5,11 @@ import home from '../../styles/homepage.module.scss'
 import Script from "next/script";
 import Link from "next/link";
 
-
 export default function Index() {
   return (
     <>
       <AuthContextProvider>
         <Layout>
-          {/* <h1>Hello world</h1> */}
             <div className={home.banner}></div>
           <div className={home.container}>
             <div className={home.cat_div}>
@@ -53,4 +50,3 @@ export default function Index() {
     </>
   );
 }
- 
