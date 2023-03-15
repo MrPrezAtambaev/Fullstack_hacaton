@@ -2,8 +2,10 @@
 import AuthContextProvider from "@/context/authContext";
 import Layout from "../components/layout";
 import Navbar from "../components/header";
-import variables from '../../styles/variables.module.scss'
+import home from '../../styles/homepage.module.scss'
 import Script from "next/script";
+import Link from "next/link";
+
 
 export default function Index() {
   return (
@@ -11,8 +13,41 @@ export default function Index() {
       <AuthContextProvider>
         <Layout>
           {/* <h1>Hello world</h1> */}
-          <div className={variables.banner}></div>
-          
+            <div className={home.banner}></div>
+          <div className={home.container}>
+            <div className={home.cat_div}>
+              <Link href={'/cats/cats/'} legacyBehavior>
+                <a>
+                  <img src="https://images.pexels.com/photos/2173872/pexels-photo-2173872.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" className={home.cat_img}/>
+                </a>
+                </Link>
+                <span className={home.text}>Котики</span>
+            </div>
+            <div className={home.dog_div} >
+              <Link href={'/dogs/dogs/'} legacyBehavior>
+                <a>
+                  <img src="https://www.rover.com/blog/wp-content/uploads/2014/08/shetland-sheepdog-smarted-dog-breeds.jpg" className={home.dog_img}/>
+                </a> 
+                </Link>
+              <span className={home.text}>Пёсики</span>
+            </div>
+            
+          </div> 
+          <section className={home.asdas}>
+            {/* пустая статичная секция чтобы сделать пробел */}
+          </section>
+          <div className={home.details}>
+              <div className={home.left_col}>
+                  <img src="https://media.tenor.com/WyyEX4PmF5kAAAAC/randowis.gif" className={home.  details_img}/>
+              </div>
+              <div className={home.right_col}>
+                  <h1>Possum</h1>
+                  <p>
+                  Хинкали непременно едятся «руками», они не разрезаются столовыми приборами, чтобы находящийся внутри бульон не вытекал на тарелку. Изделие нужно взять за «хвостик\ножку», перевернуть мешочек кверху, надкусить и первым делом выпить из него бульон.
+                  </p>
+                  <button className={home.detail_btn}>Детали</button>
+              </div>
+          </div>
         </Layout>
       </AuthContextProvider>
     </>
