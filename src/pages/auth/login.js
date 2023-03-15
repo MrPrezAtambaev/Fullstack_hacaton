@@ -13,7 +13,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleAuth() {
+  function handleAuth(e) {
+    e.preventDefault();
     let formData = new FormData();
     formData.append("email", email);
     formData.append("password", password);
