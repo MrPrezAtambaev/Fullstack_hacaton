@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { Redirect } from "next";
+import { authAxios } from "@/utils/authAxios";
+import { storageSetItem } from "@/utils/storage";
 
 export const authContext = React.createContext();
-
-const API = "http://35.246.210.249/api/v1";
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState("");
@@ -15,24 +15,22 @@ const AuthContextProvider = ({ children }) => {
   const router = useRouter();
 
   async function handleRegister(formData) {
-    setLoading(true);
     try {
-      const res = await axios.post(`${API}/account/register/`, formData);
-      console.log(res);
-      router.push("/auth/login");
-    } catch (err) {
-      console.log(err);
-      setError(Object.values(err.response.data).flat(2));
-    } finally {
-      setLoading(false);
+      const response = await authAxios.post("/account/register/", formData);
+      console.log(response);
+      router.push("/auth/login/");
+    } catch (error) {
+      console.log(error);
+      // setError(Object.values(err.response.data).flat(2));
     }
   }
 
   async function handleLogin(formData, email, router) {
     try {
-      const res = await axios.post(`${API}/account/login/`, formData);
-      localStorage.setItem("tokens", JSON.stringify(res.data));
-      localStorage.setItem("email", email);
+      const { data } = await authAxios.post("/account/login/", formData);
+      storageSetItem("accessToken", data.access);
+      storageSetItem("refreshToken", data.refresh);
+      storageSetItem("email", email);
       setCurrentUser(email);
       console.log(res);
       router.push("/");

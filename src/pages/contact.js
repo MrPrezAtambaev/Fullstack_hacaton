@@ -55,22 +55,24 @@ export default function Contact() {
             <div className={contact.single}>
               <CottageOutlinedIcon className={contact.icon} />
               <div className={contact.details}>
-                <h5 className={contact.h5}>Binghamton, New York</h5>
-                <p className={contact.p}>4343 Hinkle Deegan Lake Road</p>
+                <h5 className={contact.h5}>Бишкек, СВЕРДЛОВСКИЙ РАЙОН,</h5>
+                <p className={contact.p}>ул. Бельская, дом 8 кв. 9</p>
               </div>
             </div>
             <div className={contact.single}>
               <LocalPhoneOutlinedIcon className={contact.icon} />
               <div className={contact.details}>
-                <h5 className={contact.h5}>00 (953) 9865 562</h5>
-                <p className={contact.p}>Mon to Fri 9am to 6 pm</p>
+                <h5 className={contact.h5}>+996 707 960-614</h5>
+                <p className={contact.p}>Пон по Пят 9 до 18 часа</p>
               </div>
             </div>
             <div className={contact.single}>
               <EmailOutlinedIcon className={contact.icon} />
               <div className={contact.details}>
-                <h5 className={contact.h5}>support@colorlib.com</h5>
-                <p className={contact.p}>Send us your query anytime!</p>
+                <h5 className={contact.h5}>Kainar@mail.com</h5>
+                <p className={contact.p}>
+                  Отправьте нам свой запрос в любое время!
+                </p>
               </div>
             </div>
           </div>

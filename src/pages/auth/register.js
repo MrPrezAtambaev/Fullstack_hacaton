@@ -38,11 +38,6 @@ const Register = () => {
         <div className={about.text}>
           <div className={about.aboutContent}>
             <h1 className={about.aboutText}>Register</h1>
-            <p className={about.aboutLinks}>
-              {/* <Link href="/" legacyBehavior>
-                <a className={about.home}>Home</a>
-              </Link> */}
-            </p>
           </div>
         </div>
       </div>
