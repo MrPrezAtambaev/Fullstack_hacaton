@@ -32,16 +32,7 @@ const Login = () => {
       <div className={variables.banner}>
         <div className={about.text}>
           <div className={about.aboutContent}>
-            <h1 className={about.aboutText}>About Us</h1>
-            <p className={about.aboutLinks}>
-              <Link href="/" legacyBehavior>
-                <a className={about.home}>Home</a>
-              </Link>
-              <ArrowForwardIcon className={about.icon} />
-              <Link href="/" legacyBehavior>
-                <a className={about.about}>About</a>
-              </Link>
-            </p>
+            <h1 className={about.aboutText}>Login</h1>
           </div>
         </div>
       </div>
