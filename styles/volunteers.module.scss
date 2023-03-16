@@ -1,0 +1,131 @@
+.become{
+    position: absolute;
+    width: 100%;
+    padding-top: 16%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    & .become_text{
+        font-size: 48px;
+        font-weight: 600;
+        color: aliceblue;
+        
+    }
+    .home {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+    }
+    .about {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+    }
+    .icon {
+        margin: 0px 10px;
+
+
+        color: white;
+    }
+}
+
+.help_texts{
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    &.help_h1{
+        width: 41%;
+        margin: 0;
+        padding: 0;
+    
+    }
+}
+.help_p{
+    width: 60%;
+    text-align: center;
+}
+
+.input_group{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    & .input{
+        width: 60%;
+        height: 40px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+}
+
+.input_group2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    & .input_duo{
+        width: 29.4%;
+        margin: 10px;
+        height: 40px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+}
+
+.checkbox_h5{
+    margin-top: 25px ;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.checkboxes{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.checkbox{
+    margin: 5px;
+}
+
+.notes_h5{
+    margin-top: 25px ;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.notes_container{
+    display: flex;
+    justify-content: center;
+}
+
+.notes{
+    width: 50%;
+    height: 150px;
+    border-radius: 3px;
+}
+.notes_btn{
+    background-color: #fab700;
+    line-height: 42px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid transparent;
+    color: #fff;
+    display: inline-block;
+    font-weight: 500;
+    position: relative;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 50px;
+    margin-left: 62%;
+    margin-top: 3px;
+}

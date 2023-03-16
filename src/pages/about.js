@@ -8,6 +8,7 @@ export default function About() {
   return (
     <>
       <div className={variables.banner}>
+
         <div className={about.text}>
           <div className={about.aboutContent}>
             <h1 className={about.aboutText}>About Us</h1>
