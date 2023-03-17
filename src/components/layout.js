@@ -3,29 +3,32 @@ import Header from "./header";
 import Head from "next/head";
 import Footer from "./footer";
 import AuthContextProvider from "@/context/authContext";
+import PetContextProvider from "@/context/petsContext";
 
 const Layout = ({ children, title = "KAINAR" }) => {
   return (
-    <AuthContextProvider>
-      <nav>
-        <Head>
-          <meta charset="utf-8" />
-          <title>{title} | MAKERS </title>
-          <link
-            rel="shortcut icon"
-            href=".././public/icons/logo.png"
-            type="image/x-icon"
-          />
-          <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
-        <Header />
-      </nav>
-      <main>{children}</main>
-      <Footer />
-    </AuthContextProvider>
+    <PetContextProvider>
+      <AuthContextProvider>
+        <nav>
+          <Head>
+            <meta charset="utf-8" />
+            <title>{title} | MAKERS </title>
+            <link
+              rel="shortcut icon"
+              href="/icons/logo.png"
+              type="image/x-icon"
+            />
+            <link
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+              rel="stylesheet"
+            />
+          </Head>
+          <Header />
+        </nav>
+        <main>{children}</main>
+        <Footer />
+      </AuthContextProvider>
+    </PetContextProvider>
   );
 };
 

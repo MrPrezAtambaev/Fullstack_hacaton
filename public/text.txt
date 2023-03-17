@@ -1,40 +1,30 @@
-<div>
-        <h2 style={{ marginBottom: "90px" }}>Register</h2>
-        {error ? <h2>{error}</h2> : null}
-        <input
-          type="text"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Password confirmation"
-          onChange={(e) => setPasswordConfirm(e.target.value)}
-        />
-        <button onClick={handleSave}>Register</button>
-      </div>
+const createPet = async (newPet, petType, router) => {
+  const allowedPetTypes = ["dogs", "cats"];
+  if (!allowedPetTypes.includes(petType)) {
+    console.error(`Invalid pet type: ${petType}`);
+    return;
+  }
+  try {
+    const res = await authAxios.post(`/posts/${petType}/`, newPet);
+    console.log(res);
+    router.push(`/${petType}`);
+    getPets();
+  } catch (e) {
+    console.log(e);
+  }
+};
 
+// const refreshToken = storageGetItem("refreshToken");
+      // const accessToken = storageGetItem("accessToken");
 
-      error ? (
-    <h2>{error}</h2>
-  ) : (
-    <div>
-      <h2 style={{ marginBottom: "90px" }}>Login Page</h2>
-      <input
-        type="text"
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleAuth}>Login</button>
-    </div>
-  )
+      // const response = await authAxios.post(
+      //   "/account/refresh/",
+      //   {
+      //     refresh_token: refreshToken,
+      //   },
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${storageGetItem("refreshToken")}`,
+      //     },
+      //   }
+      // );
