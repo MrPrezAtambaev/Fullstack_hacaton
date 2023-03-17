@@ -39,6 +39,21 @@ $color: #333;
     animation-delay: 0s; /* Задержка перед началом */
 }
 
+.logo_pic_div{
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: aliceblue;
+}
+
+.logo_pic{
+    // display: flex;
+    // justify-content: center;
+    // border-radius: 50%;
+    // background-color: aliceblue;
+    left: 100px;
+}
+
 @keyframes show{
     0%{
     opacity:0;

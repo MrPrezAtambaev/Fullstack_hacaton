@@ -4,6 +4,7 @@ import Navbar from "../components/header";
 import home from "../../styles/homepage.module.scss";
 import Script from "next/script";
 import Link from "next/link";
+import about from "../../styles/about.module.scss";
 
 export default function Index() {
   return (
@@ -12,7 +13,7 @@ export default function Index() {
         <div className={home.banner}></div>
         <div className={home.container}>
           <div className={home.cat_div}>
-            <Link href={"/cats/cats/"} legacyBehavior>
+            <Link href={"/cats/"} legacyBehavior>
               <a>
                 <img
                   src="https://images.pexels.com/photos/2173872/pexels-photo-2173872.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
@@ -23,7 +24,7 @@ export default function Index() {
             <span className={home.text}>Котики</span>
           </div>
           <div className={home.dog_div}>
-            <Link href={"/dogs/dogs/"} legacyBehavior>
+            <Link href={"/dogs/"} legacyBehavior>
               <a>
                 <img
                   src="https://www.rover.com/blog/wp-content/uploads/2014/08/shetland-sheepdog-smarted-dog-breeds.jpg"
@@ -55,6 +56,24 @@ export default function Index() {
             <button className={home.detail_btn}>Детали</button>
           </div>
         </div>
+        <section className={about.valonters}>
+        <div className={about.overplayBg}></div>
+        <div className={about.cont}>
+          <div className={about.rove}>
+            <h1 className={about.help}>Want to help? Become a Volunteer</h1>
+            <p className={about.lorem}>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing
+              elit, sed do eiusmod tempor.
+            </p>
+            <div className={about.Btn}>
+              <button className={about.pdf}>View pdf details</button>
+              <button className={about.register}>Register now</button>
+            </div>
+          </div>
+        </div>
+      </section>
       </AuthContextProvider>
     </>
   );
