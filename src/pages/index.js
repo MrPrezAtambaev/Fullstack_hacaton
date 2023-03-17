@@ -4,6 +4,7 @@ import Navbar from "../components/header";
 import home from "../../styles/homepage.module.scss";
 import Script from "next/script";
 import Link from "next/link";
+import about from "../../styles/about.module.scss";
 
 export default function Index() {
   return (
@@ -55,6 +56,24 @@ export default function Index() {
             <button className={home.detail_btn}>Детали</button>
           </div>
         </div>
+        <section className={about.valonters}>
+        <div className={about.overplayBg}></div>
+        <div className={about.cont}>
+          <div className={about.rove}>
+            <h1 className={about.help}>Want to help? Become a Volunteer</h1>
+            <p className={about.lorem}>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing
+              elit, sed do eiusmod tempor.
+            </p>
+            <div className={about.Btn}>
+              <button className={about.pdf}>View pdf details</button>
+              <button className={about.register}>Register now</button>
+            </div>
+          </div>
+        </div>
+      </section>
       </AuthContextProvider>
     </>
   );

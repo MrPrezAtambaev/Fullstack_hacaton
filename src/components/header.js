@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import variables from "../../styles/variables.module.scss";
 import Link from "next/link";
+import Image from "next/image";
 
 //MUI
 import Box from "@mui/material/Box";
@@ -73,9 +74,15 @@ export default function Header() {
     <div>
       <div
         className={variables.navbar}
-        id={`${isSticky ? variables.sticky : ""}`}
-      >
-        <a className={variables.logo}>Кайнар</a>
+        id={`${isSticky ? variables.sticky : ""}`}>
+          <div className={variables.logo_pic_div}>
+
+          <Image src='/icons/logo.png' width={100} height={100} className={variables.logo_pic}/>
+          </div>
+          <Link href='/' legacyBehavior>
+          <a className={variables.logo}>Кайнар</a>
+
+          </Link>
         <ul className={variables.ul}>
           <li>
             <Link href="/" legacyBehavior>

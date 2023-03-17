@@ -1,0 +1,66 @@
+
+.cd_banner{
+    position: relative;
+    width: 100%;
+    height: 900px;
+    background: url(https://img.freepik.com/free-vector/cute-pets-illustration_53876-112522.jpg?w=1380&t=st=1678899534~exp=1678900134~hmac=d507a66fbb1c56b6f10f7aa3acc242bf668610a13d3fc100c57a9dab35b3781f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    &::before{
+        content: "";
+        position: absolute;
+        background: rgba(0, 0, 0, 0.321);
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+}
+
+.card_container{
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    top: 300px;
+}
+
+.card{
+    
+    background-color: rgb(255, 255, 255);
+    width: 35%; 
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 5px;
+    // margin: 40px;
+}
+
+.card_img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+.pet_name{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0%;
+}
+
+.link{
+    text-decoration: none;
+    & .link:visited{
+        text-decoration: none;
+    }
+}
+
+.link_1{
+    text-decoration: none;
+}
+
+//details 
+

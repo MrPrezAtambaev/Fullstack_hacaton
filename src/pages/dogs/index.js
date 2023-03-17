@@ -1,25 +1,23 @@
-import Link from "next/link";
-import about from "../../../styles/about.module.scss";
-import variables from "../../../styles/variables.module.scss";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import cats from '../../../styles/cats.module.scss'
+import dogs from '../../../styles/dogs.module.scss'
+import Link from 'next/link'
+
 
 export default function Dogs() {
   return (
-    <div className={variables.banner}>
-      <div className={about.text}>
-        <div className={about.aboutContent}>
-          <h1 className={about.aboutText}>Dogs</h1>
-          <p className={about.aboutLinks}>
-            <Link href="/" legacyBehavior>
-              <a className={about.home}>Home</a>
-            </Link>
-            <ArrowForwardIcon className={about.icon} />
-            <Link href="/dogs" legacyBehavior>
-              <a className={about.about}>Dogs</a>
-            </Link>
-          </p>
+    <>
+    <div className={cats.cd_banner}>
+      <div className={dogs.card_container}>
+        <div class={dogs.card}>
+          <Link className={dogs.link_1} href={"/details/:id"} legacyBehavior>
+            <a className={dogs.link}>
+              <img src="https://welovedoodles.com/wp-content/uploads/2022/02/walter-dog-meme-original-790x1024.jpeg" alt="John" className={dogs.card_img} />  
+              <p className={dogs.pet_name}>Уолтэр Уайт</p>
+            </a>
+          </Link>
         </div>
       </div>
     </div>
+  </>
   );
 }

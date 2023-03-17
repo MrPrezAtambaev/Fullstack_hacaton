@@ -1,3 +1,3 @@
 export default function Cats() {
-  return <h1>Cats Page id123</h1>;
+  return <h1>Cats id Page</h1>;
 }

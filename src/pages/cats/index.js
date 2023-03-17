@@ -1,25 +1,26 @@
-import Link from "next/link";
-import about from "../../../styles/about.module.scss";
-import variables from "../../../styles/variables.module.scss";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import cats from '../../../styles/cats.module.scss'
+import Link from 'next/link'
+import favorite from '../../../styles/favorite.module.scss'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Image from 'next/image'
+
 
 export default function Cats() {
   return (
-    <div className={variables.banner}>
-      <div className={about.text}>
-        <div className={about.aboutContent}>
-          <h1 className={about.aboutText}>Cats</h1>
-          <p className={about.aboutLinks}>
-            <Link href="/" legacyBehavior>
-              <a className={about.home}>Home</a>
+    <>
+      <div className={cats.cd_banner}>
+        <div className={cats.card_container}>
+          <div class={cats.card}>
+            <Link className={cats.link_1} href={"/details/"} legacyBehavior>
+              <a className={cats.link}>
+                <img src="https://pbs.twimg.com/media/E3hsoMuVUAMk91Z.jpg" className={cats.card_img} />  
+                <p className={cats.pet_name}>Масюня</p>
+              </a>
             </Link>
-            <ArrowForwardIcon className={about.icon} />
-            <Link href="/cats" legacyBehavior>
-              <a className={about.about}>Cats</a>
-            </Link>
-          </p>
+                <button className={favorite.fav_btn}></button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    </>
+  )
 }
