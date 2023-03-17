@@ -1,5 +1,3 @@
-
-
 import cats from '../../../styles/cats.module.scss'
 import Link from 'next/link'
 import favorite from '../../../styles/favorite.module.scss'

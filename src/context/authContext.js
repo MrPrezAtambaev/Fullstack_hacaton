@@ -1,11 +1,14 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Redirect } from "next";
 import { authAxios } from "@/utils/authAxios";
 import { storageSetItem } from "@/utils/storage";
+import { storageGetItem } from "@/utils/storage";
+import { storageDeleteItem } from "@/utils/storage";
+import jwtDecode from "jwt-decode";
 
 export const authContext = React.createContext();
+
+export const useAuth = () => useContext(authContext);
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState("");
@@ -14,6 +17,13 @@ const AuthContextProvider = ({ children }) => {
 
   const router = useRouter();
 
+  useEffect(() => {
+    const storageUser = storageGetItem("user");
+    if (Boolean(storageUser) != Boolean(currentUser)) {
+      setCurrentUser(storageUser);
+    }
+  });
+
   async function handleRegister(formData) {
     try {
       const response = await authAxios.post("/account/register/", formData);
@@ -21,30 +31,42 @@ const AuthContextProvider = ({ children }) => {
       router.push("/auth/login/");
     } catch (error) {
       console.log(error);
-      // setError(Object.values(err.response.data).flat(2));
     }
   }
 
   async function handleLogin(formData, email, router) {
     try {
       const { data } = await authAxios.post("/account/login/", formData);
+      const user = {
+        user_id: jwtDecode(data.access).user_id,
+        email: email,
+      };
       storageSetItem("accessToken", data.access);
       storageSetItem("refreshToken", data.refresh);
-      storageSetItem("email", email);
-      setCurrentUser(email);
-      console.log(res);
+      storageSetItem("user", user);
+      setCurrentUser(user);
+      console.log("accessToken", jwtDecode(data.access));
       router.push("/");
     } catch (err) {
       console.log(err);
-      setError([err.response.data.detail]);
     }
   }
+
+  const logout = () => {
+    storageDeleteItem("accessToken");
+    storageDeleteItem("refreshToken");
+    storageDeleteItem("user");
+    setCurrentUser(null);
+    router.push("/auth/login");
+  };
 
   const values = {
     currentUser,
     error,
     loading,
+    logout,
 
+    setCurrentUser,
     setError,
     handleRegister,
     handleLogin,

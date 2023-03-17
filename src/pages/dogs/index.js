@@ -1,4 +1,3 @@
-
 import cats from '../../../styles/cats.module.scss'
 import dogs from '../../../styles/dogs.module.scss'
 import Link from 'next/link'

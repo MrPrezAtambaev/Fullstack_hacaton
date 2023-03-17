@@ -13,7 +13,7 @@ export default function Index() {
         <div className={home.banner}></div>
         <div className={home.container}>
           <div className={home.cat_div}>
-            <Link href={"/cats/"} legacyBehavior>
+            <Link href={"/cats"} legacyBehavior>
               <a>
                 <img
                   src="https://images.pexels.com/photos/2173872/pexels-photo-2173872.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
@@ -24,7 +24,7 @@ export default function Index() {
             <span className={home.text}>Котики</span>
           </div>
           <div className={home.dog_div}>
-            <Link href={"/dogs/"} legacyBehavior>
+            <Link href={"/dogs"} legacyBehavior>
               <a>
                 <img
                   src="https://www.rover.com/blog/wp-content/uploads/2014/08/shetland-sheepdog-smarted-dog-breeds.jpg"
