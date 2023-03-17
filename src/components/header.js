@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import variables from "../../styles/variables.module.scss";
 import Link from "next/link";
 
@@ -11,6 +11,8 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useRouter } from "next/router";
+import { authContext, useAuth } from "../context/authContext";
+import { storageGetItem } from "@/utils/storage";
 
 export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
@@ -59,6 +61,14 @@ export default function Header() {
     },
   ];
 
+  const { logout, currentUser } = useAuth();
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("accessToken")) {
+  //     checkAuth();
+  //   }
+  // }, []);
+
   return (
     <div>
       <div
@@ -93,45 +103,59 @@ export default function Header() {
             </Link>
           </li>
           <li>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Account">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="" src="..." />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Account">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="" src="..." />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
               >
-              {settings.map((setting) => (
-                <MenuItem key={setting.type} onClick={handleCloseUserMenu}>
-                  <Typography
-                    align="center"
-                    onClick={() => router.push(setting.path)}
-                  >
-                    {setting.type}
-                  </Typography>
-                </MenuItem>
-              ))}
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Logout</Typography>
-              </MenuItem>
-            </Menu>
-          </Box>
-              </li>
+                {currentUser ? (
+                  <>
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center" onClick={logout}>
+                        Выйти из {currentUser.email}
+                      </Typography>
+                    </MenuItem>
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Typography
+                        textAlign="center"
+                        onClick={() => router.push("/favorite")}
+                      >
+                        Favorites
+                      </Typography>
+                    </MenuItem>
+                  </>
+                ) : (
+                  settings.map((setting) => (
+                    <MenuItem key={setting.type} onClick={handleCloseUserMenu}>
+                      <Typography
+                        textAlign="center"
+                        onClick={() => router.push(setting.path)}
+                      >
+                        {setting.type}
+                      </Typography>
+                    </MenuItem>
+                  ))
+                )}
+              </Menu>
+            </Box>
+          </li>
         </ul>
       </div>
       <div className="banner"></div>
