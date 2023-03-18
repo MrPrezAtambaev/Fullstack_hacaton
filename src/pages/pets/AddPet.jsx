@@ -6,13 +6,13 @@ const AddPet = () => {
   const router = useRouter();
   const { createPet } = usePets();
 
-  const [owner, setOwner] = useState("");
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [desc, setDesc] = useState("");
   const [category, setCategory] = useState("");
   const [gender, setGender] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
+  const [owner, setOwner] = useState("");
 
   function handleSave() {
     let newPet = new FormData();
@@ -21,27 +21,17 @@ const AddPet = () => {
     newPet.append("description", desc);
     newPet.append("gender", gender);
     newPet.append("category", category);
-    newPet.append("owner", owner);
+    newPet.append("owner_id", owner);
     newPet.append("images", image);
 
-    // const petType =
-    //   category === "cats" ? "cats" : category === "dogs" ? "dogs" : "";
-
     const selectedCategory = category;
-
-    // Выполняем перенаправление в зависимости от выбранной категории
-    if (selectedCategory === "cats") {
-      window.location.href = "/cats";
-    } else if (selectedCategory === "dogs") {
-      window.location.href = "/dogs";
-    }
 
     createPet(newPet);
   }
 
   return (
     <div>
-      <h2>Add Pet</h2>
+      <h2 style={{ marginBottom: "30px" }}>Add Pet</h2>
       <input
         type="text"
         placeholder="Name"
@@ -54,7 +44,7 @@ const AddPet = () => {
         onChange={(e) => setImage(e.target.files[0])}
       />
       <input
-        type="text"
+        type="number"
         placeholder="Age"
         value={age}
         onChange={(e) => setAge(e.target.value)}
@@ -65,13 +55,21 @@ const AddPet = () => {
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
       />
-      <input
-        type="text"
-        placeholder="Gender"
-        value={gender}
-        onChange={(e) => setGender(e.target.value)}
-      />
-
+      <div>
+        <label>
+          Gender:
+          <select
+            value={gender}
+            onChange={(e) => {
+              setGender(e.target.value);
+            }}
+          >
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </label>
+      </div>
       <div>
         <label>
           Category:
@@ -89,7 +87,7 @@ const AddPet = () => {
       </div>
       <input
         type="text"
-        placeholder="Owner"
+        placeholder="Owner ID"
         value={owner}
         onChange={(e) => setOwner(e.target.value)}
       />

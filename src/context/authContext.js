@@ -44,7 +44,7 @@ const AuthContextProvider = ({ children }) => {
       storageSetItem("accessToken", data.access);
       storageSetItem("refreshToken", data.refresh);
       storageSetItem("user", user);
-      setCurrentUser(user);
+      setCurrentUser(user.email);
       console.log("accessToken", jwtDecode(data.access));
       router.push("/");
     } catch (err) {

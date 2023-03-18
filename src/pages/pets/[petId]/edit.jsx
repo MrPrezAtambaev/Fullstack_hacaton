@@ -3,76 +3,107 @@ import React, { useState, useEffect } from "react";
 import { usePets } from "@/context/petsContext";
 
 const EditPet = () => {
-  const { getOnePet, onePet, saveEditedPet } = usePets();
-  const [pets, setPet] = useState(onePet);
+  const { getOnePet, onePets, saveEditedPet } = usePets();
+  const [pets, setPets] = useState(onePets);
 
   const router = useRouter();
-  const { id } = router.query;
+  const petId = router.query.petId;
+  // const { id } = router.query;
 
   useEffect(() => {
-    getOnePet(id);
-  }, [id]);
+    if (petId) {
+      getOnePet(petId);
+    }
+  }, []);
 
   useEffect(() => {
-    setPet(onePet);
-  }, [onePet]);
+    if (onePets) {
+      setPets(onePets);
+    }
+    console.log(onePets);
+  }, [onePets]);
+
+  useEffect(() => {
+    console.log(pets);
+  }, [pets]);
 
   const handleInp = (e) => {
-    let obj = {
-      ...pets,
-      [e.target.name]: e.target.value,
-    };
-    setPet(obj);
+    if (e.target.name === "image") {
+      let reader = new FileReader();
+      reader.onload = (event) => {
+        let obj = {
+          ...pets,
+          images: [
+            {
+              ...pets.images[0],
+              image: event.target.result,
+            },
+          ],
+        };
+        setPets(obj);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      let obj = {
+        ...pets,
+        [e.target.name]: e.target.value,
+      };
+      setPets(obj);
+    }
   };
 
   return (
     <>
       {pets ? (
         <>
-          <h2>Edit Product</h2>
+          <h2 style={{ marginBottom: "30px" }}>Edit Pet</h2>
           <input
             type="text"
             name="name"
             onChange={handleInp}
-            value={pet.name}
+            value={pets.name}
+          />
+          <input
+            type="file"
+            accept="image/*"
+            name="image"
+            onChange={handleInp}
           />
           <input
             type="text"
             name="description"
             onChange={handleInp}
-            value={pet.desc}
+            value={pets.description}
           />
-          <input type="text" name="age" onChange={handleInp} value={pet.age} />
+          <input
+            type="number"
+            name="age"
+            onChange={handleInp}
+            value={pets.age}
+          />
           <input
             type="text"
             name="gender"
             onChange={handleInp}
-            value={pet.gender}
+            value={pets.gender}
           />
           <input
             type="text"
             name="category"
             onChange={handleInp}
-            value={pet.category}
+            value={pets.category}
           />
-          <input
-            type="text"
-            name="owner"
-            onChange={handleInp}
-            value={pet.owner}
-          />
-
           <button
             onClick={() => {
-              saveEditedPet(pet);
-              router.push("/pets/PetList");
+              saveEditedPet(pets);
+              // router.push("/pets/PetList");
             }}
           >
             Save changes
           </button>
         </>
       ) : (
-        <></>
+        <h1>Loading...</h1>
       )}
     </>
   );
