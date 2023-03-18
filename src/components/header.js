@@ -74,15 +74,14 @@ export default function Header() {
     <div>
       <div
         className={variables.navbar}
-        id={`${isSticky ? variables.sticky : ""}`}>
-          <div className={variables.logo_pic_div}>
-
-          <Image src='/icons/logo.png' width={100} height={100} className={variables.logo_pic}/>
-          </div>
-          <Link href='/' legacyBehavior>
+        id={`${isSticky ? variables.sticky : ""}`}
+      >
+        <div className={variables.logo_pic_div}>
+          {/* <Image src='/icons/logo.png' width={100} height={100} className={variables.logo_pic}/> */}
+        </div>
+        <Link href="/" legacyBehavior>
           <a className={variables.logo}>Кайнар</a>
-
-          </Link>
+        </Link>
         <ul className={variables.ul}>
           <li>
             <Link href="/" legacyBehavior>

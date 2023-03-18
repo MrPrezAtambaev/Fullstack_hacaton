@@ -9,7 +9,6 @@ const PetList = () => {
     getPets();
   }, []);
 
-  console.log(pets);
   return (
     <div>
       <h2>Pets</h2>

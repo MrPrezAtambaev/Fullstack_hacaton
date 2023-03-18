@@ -28,3 +28,7 @@ const createPet = async (newPet, petType, router) => {
       //     },
       //   }
       // );
+
+
+
+    images:{id: 3, image: "http://35.246.210.249/media/images/testimonial.png", name: 14}
