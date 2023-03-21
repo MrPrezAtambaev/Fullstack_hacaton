@@ -1,11 +1,11 @@
-import cats from '../../../styles/cats.module.scss'
-import dogs from '../../../styles/dogs.module.scss'
-import Link from 'next/link'
-
+import cats from "../../../styles/cats.module.scss";
+import dogs from "../../../styles/dogs.module.scss";
+import Link from "next/link";
 
 export default function Dogs() {
   return (
     <>
+
     <div className={cats.cd_banner}>
       <div className={dogs.card_container}>
         <div className={dogs.card}>
@@ -15,9 +15,9 @@ export default function Dogs() {
               <p className={dogs.pet_name}>Уолтэр Уайт</p>
             </a>
           </Link>
+
         </div>
       </div>
-    </div>
-  </>
+    </>
   );
 }

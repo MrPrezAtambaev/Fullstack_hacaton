@@ -1,6 +1,5 @@
-import React, { useContext, useReducer } from "react";
+import React, { useCallback, useContext, useReducer, useState } from "react";
 import { authAxios } from "@/utils/authAxios";
-import { useRouter } from "next/router";
 
 export const petsContext = React.createContext();
 export const usePets = () => useContext(petsContext);
@@ -8,19 +7,18 @@ export const usePets = () => useContext(petsContext);
 const INIT_STATE = {
   pets: [],
   pages: 0,
-  onePets: null,
 };
 
 function reducer(state = INIT_STATE, action) {
   switch (action.type) {
     case "GET_PETS":
-      console.log("Payload Results:", action.payload);
+      console.log("Payload get_one:", action.payload);
       return {
         ...state,
         pets: action.payload,
       };
     case "ONE_PET":
-      return { ...state, onePets: action.payload };
+      return { ...state, onePet: action.payload };
     default:
       return state;
   }
@@ -28,65 +26,69 @@ function reducer(state = INIT_STATE, action) {
 
 const PetContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
+  const [comments, setComments] = useState([]);
+  const [oneComment, setOneComment] = useState(null);
 
-  const getPets = async () => {
+  const getPets = useCallback(async () => {
     try {
-      const res = await authAxios("/post/pets/");
-      console.log(res.data);
+      const { data } = await authAxios("/post/pets/");
+      console.log(data);
       dispatch({
         type: "GET_PETS",
-        payload: res.data,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const createPet = async (newPet) => {
-    try {
-      const { data } = await authAxios.post("/post/pets/", newPet); // выполнение запроса с автоматическим добавлением заголовка Authorization
-      console.log(data);
-      getPets();
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const getOnePet = async (id) => {
-    try {
-      const { data } = await authAxios(`/post/pets/${id}/`);
-      dispatch({
-        type: "ONE_PET",
         payload: data,
       });
       console.log(data);
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
     }
-  };
+  }, []);
 
-  const saveEditedPet = async (editedPet) => {
-    try {
-      const { data } = await authAxios.patch(
-        `/post/pets/${editedPet.id}/`,
-        editedPet
-      );
-      console.log(data);
-      getPets();
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const createPet = useCallback(
+    async (newPets) => {
+      try {
+        const { data } = await authAxios.post("/post/pets/", newPets); // выполнение запроса с автоматическим добавлением заголовка Authorization
+        console.log(data);
+        console.log(newPets);
+        getPets();
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    [getPets]
+  );
 
-  const deletePet = async (id) => {
-    try {
-      const { data } = await authAxios.delete(`/post/pets/${id}/`);
-      console.log(data);
-      getPets();
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const deletePet = useCallback(
+    async (id) => {
+      try {
+        const { data } = await authAxios.delete(`/post/pets/${id}/`);
+        console.log(data);
+        getPets();
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    [getPets]
+  );
+
+  // const deleteComment = async (id) => {
+  //   try {
+  //     const { data } = await authAxios.delete(`/feedback/comment/${id}`);
+  //     console.log(data);
+  //     getComments(id);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+
+  // const getOneComment = async (id) => {
+  //   try {
+  //     const { data } = await authAxios(`/feedback/comment/${id}`);
+  //     console.log(data);
+  //     setOneComment(data);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
   const router = useRouter();
   const fetchByParams = (query, value) => {
@@ -107,12 +109,9 @@ const PetContextProvider = ({ children }) => {
   const values = {
     pets: state.pets,
     pages: state.pages,
-    onePets: state.onePets,
 
     getPets,
     createPet,
-    getOnePet,
-    saveEditedPet,
     deletePet,
     fetchByParams,
     

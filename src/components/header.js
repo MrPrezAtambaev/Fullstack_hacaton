@@ -82,15 +82,16 @@ export default function Header() {
         </div>
       <div
         className={variables.navbar}
+
         id={`${isSticky ? variables.sticky : ""}`}>
           <div className={variables.logo_pic_div}>
 
           <img src='/icons/5.png' className={variables.logo_pic}/>
           </div>
           <Link href='/' legacyBehavior>
-          <a className={variables.logo}>Кайнар</a>
 
-          </Link>
+          <a className={variables.logo}>Кайнар</a>
+        </Link>
         <ul className={variables.ul}>
           <li>
             <Link href="/pets/PetList" legacyBehavior>
@@ -160,6 +161,16 @@ export default function Header() {
                         Favorites
                       </Typography>
                     </MenuItem>
+                    {currentUser.email === "admin@admin.com" && (
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Typography
+                          textAlign="center"
+                          onClick={() => router.push("/pets/AddPet")}
+                        >
+                          AddPet
+                        </Typography>
+                      </MenuItem>
+                    )}
                   </>
                 ) : (
                   settings.map((setting) => (
