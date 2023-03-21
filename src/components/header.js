@@ -146,6 +146,16 @@ export default function Header() {
                         Favorites
                       </Typography>
                     </MenuItem>
+                    {currentUser.email === "admin@admin.com" && (
+                      <MenuItem onClick={handleCloseUserMenu}>
+                        <Typography
+                          textAlign="center"
+                          onClick={() => router.push("/pets/AddPet")}
+                        >
+                          AddPet
+                        </Typography>
+                      </MenuItem>
+                    )}
                   </>
                 ) : (
                   settings.map((setting) => (

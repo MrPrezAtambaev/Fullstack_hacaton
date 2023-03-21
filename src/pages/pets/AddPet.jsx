@@ -4,29 +4,35 @@ import { usePets } from "@/context/petsContext";
 
 const AddPet = () => {
   const router = useRouter();
-  const { createPet } = usePets();
+  const { createPet, createImagePet } = usePets();
+  const petId = router.query.petId;
 
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [desc, setDesc] = useState("");
   const [category, setCategory] = useState("");
   const [gender, setGender] = useState("");
-  const [image, setImage] = useState(null);
-  const [owner, setOwner] = useState("");
+  const [images, setImages] = useState([]);
 
   function handleSave() {
-    let newPet = new FormData();
+    if (name.trim() === "") {
+      console.log("Please enter a name for your pet.");
+      return;
+    }
+
+    const newPet = new FormData();
     newPet.append("name", name);
     newPet.append("age", age);
     newPet.append("description", desc);
     newPet.append("gender", gender);
-    newPet.append("category", category);
-    newPet.append("owner_id", owner);
-    newPet.append("images", image);
-
-    const selectedCategory = category;
+    newPet.append("category", category); // Add the post ID to the form data
+    for (let i = 0; i < images.length; i++) {
+      newPet.append("images", images[i]);
+    }
+    // Bind the name to the post ID
 
     createPet(newPet);
+    router.push("/pets/PetList/");
   }
 
   return (
@@ -41,7 +47,8 @@ const AddPet = () => {
       <input
         type="file"
         accept="image/*"
-        onChange={(e) => setImage(e.target.files[0])}
+        onChange={(e) => setImages([...images, ...e.target.files])}
+        multiple
       />
       <input
         type="number"
@@ -85,13 +92,8 @@ const AddPet = () => {
           </select>
         </label>
       </div>
-      <input
-        type="text"
-        placeholder="Owner ID"
-        value={owner}
-        onChange={(e) => setOwner(e.target.value)}
-      />
-      <button onClick={handleSave}>Save</button>
+      <button onClick={() => handleSave()}>Save</button>
+      {/* Pass the post ID to the handleSave function */}
     </div>
   );
 };

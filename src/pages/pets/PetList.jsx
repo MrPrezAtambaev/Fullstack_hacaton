@@ -12,9 +12,11 @@ const PetList = () => {
   return (
     <div>
       <h2>Pets</h2>
-      {pets?.map((item) => (
-        <PetCard key={item.id} item={item} />
-      ))}
+      {pets && pets.results ? (
+        pets.results.map((item) => <PetCard key={item.id} item={item} />)
+      ) : (
+        <h3>Loading...</h3>
+      )}
     </div>
   );
 };
