@@ -1,6 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { usePets } from "@/context/petsContext";
+import add from '../../../styles/addpet.module.scss'
+import variables from '../../../styles/variables.module.scss'
+import Link from "next/link";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const AddPet = () => {
   const router = useRouter();
@@ -35,66 +39,101 @@ const AddPet = () => {
     } else if (selectedCategory === "dogs") {
       window.location.href = "/dogs";
     }
-
+    
     createPet(newPet);
   }
-
+  
   return (
-    <div>
-      <h2>Add Pet</h2>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => setImage(e.target.files[0])}
-      />
-      <input
-        type="text"
-        placeholder="Age"
-        value={age}
-        onChange={(e) => setAge(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Description"
-        value={desc}
-        onChange={(e) => setDesc(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Gender"
-        value={gender}
-        onChange={(e) => setGender(e.target.value)}
-      />
+    <>
+        <div className={variables.banner}>
+          <div className={add.add}>
+            <h1 className={add.add_text}>Add Pet</h1>
+            <p className={add.aboutLinks}>
+              <Link href="/" legacyBehavior>
+                <a className={add.home}>Home</a>
+              </Link>
+              <ArrowForwardIcon className={add.icon} />
+              <Link href="/" legacyBehavior>
+                <a className={add.about}>Add Pet</a>
+              </Link>
+            </p>
+          </div>
+        </div>
 
-      <div>
-        <label>
-          Category:
-          <select
-            value={category}
-            onChange={(e) => {
-              setCategory(e.target.value);
-            }}
-          >
-            <option value="">Select Category</option>
-            <option value="cats">Cat</option>
-            <option value="dogs">Dog</option>
-          </select>
-        </label>
-      </div>
-      <input
-        type="text"
-        placeholder="Owner"
-        value={owner}
-        onChange={(e) => setOwner(e.target.value)}
-      />
-      <button onClick={handleSave}>Save</button>
-    </div>
+        <div className={add.container}>
+          <div className={add.input_group}>
+            <h2 className={add.h2}>Add pets data</h2>
+            <input
+            className={add.input}
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              />
+            <input
+              className={add.input}
+              type="text"
+              placeholder="Age"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+              />
+            <input
+              className={add.input}
+              type="text"
+              placeholder="Description"
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+              />
+            <input
+              className={add.input}
+              type="text"
+              placeholder="Owner"
+              value={owner}
+              onChange={(e) => setOwner(e.target.value)}
+              />
+            <div className={add.select_div}>
+              <div className={add.div}>
+                <select
+                  className={add.select}
+                  type="text"
+                  placeholder="Gender"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  >
+                    <option className={add.first} value="" disabled selected>Select Pet Gender</option>
+                    <option className={add.option} value="cats">Female</option>
+                    <option className={add.option} value="dogs">Male</option>
+                  </select>
+                  <b/>
+
+            <select
+              className={add.select}
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value);
+              }}
+              >
+              <option className={add.first} value="" disabled selected>Select Pet</option>
+              <option className={add.option} value="cats">Cat</option>
+              <option className={add.option} value="dogs">Dog</option>
+            </select>
+              <b/>
+            </div>
+            <div className={add.div}>
+            <label>
+            выберите пикчу <b/>
+            <input
+            className={add.file}
+              type="file"
+              accept="image/*"
+              onChange={(e) => setImage(e.target.files[0])}/>
+              </label> 
+              </div>
+              </div>
+            <button className={add.save_btn} onClick={handleSave}>Save</button>
+              </div>
+          </div>
+    </>
   );
 };
 

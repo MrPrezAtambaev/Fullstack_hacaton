@@ -1,6 +1,11 @@
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import { usePets } from "@/context/petsContext";
+import add from '../../../../styles/addpet.module.scss';
+import variables from '../../../../styles/variables.module.scss';
+import Link from "next/link";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
 
 const EditPet = () => {
   const { getOnePet, onePet, saveEditedPet } = usePets();
@@ -27,6 +32,20 @@ const EditPet = () => {
 
   return (
     <>
+            <div className={variables.banner}>
+          <div className={add.add}>
+            <h1 className={add.add_text}>Edit Pet Data</h1>
+            <p className={add.aboutLinks}>
+              <Link href="/" legacyBehavior>
+                <a className={add.home}>Home</a>
+              </Link>
+              <ArrowForwardIcon className={add.icon} />
+              <Link href="/" legacyBehavior>
+                <a className={add.about}>Add Pet</a>
+              </Link>
+            </p>
+          </div>
+        </div>
       {pets ? (
         <>
           <h2>Edit Product</h2>

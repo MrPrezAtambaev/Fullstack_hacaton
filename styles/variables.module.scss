@@ -29,7 +29,7 @@ $color: #333;
     font-weight: 700;
     color: rgb(220, 220, 220);
     text-decoration: none;
-    font-size: 2em;
+    font-size: 40px;
     text-transform: uppercase;
     letter-spacing: 2px;
     opacity:0; /*Элемент полностью прозрачный (невидимый)*/
@@ -37,21 +37,24 @@ $color: #333;
     animation: show 3s 1; /* Указываем название анимации, её время и количество повторов*/
     animation-fill-mode: forwards; /* Чтобы элемент оставался в конечном состоянии анимации */
     animation-delay: 0s; /* Задержка перед началом */
+    left: -7%;
 }
 
-.logo_pic_div{
-    display: flex;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: aliceblue;
-}
+// .logo_pic_div{
+//     display: flex;
+//     justify-content: center;
+//     border-radius: 50%;
+//     background-color: aliceblue;
+// }
 
 .logo_pic{
     // display: flex;
     // justify-content: center;
     // border-radius: 50%;
     // background-color: aliceblue;
-    left: 100px;
+    width: 128px;
+    height: 128px;
+    // left: 0%;
 }
 
 @keyframes show{
@@ -120,3 +123,42 @@ $color: #333;
 
 }
 
+///Adaptive
+
+@media all and (max-width: 1024px){
+
+    .navbar{
+        height: 100px;
+    }
+    .a{
+        font-size: 14px;
+    }
+    .logo{
+        font-size: 30px;
+        left: -3%;
+    }
+    .logo_pic{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media all and (max-width: 768px){
+
+    .navbar{
+        height: 100px;
+    }
+    .a{
+        font-size: 14px;
+        margin: 0px 10px;
+    }
+    .logo{
+        font-size: 25px;
+        padding-left: 5%;
+    }
+    .logo_pic{
+        width: 80px;
+        height: 80px;
+        margin-left: 5%;   
+    }
+}

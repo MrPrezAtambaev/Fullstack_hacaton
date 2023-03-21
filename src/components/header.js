@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import variables from "../../styles/variables.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import burger from '../../src/components/burger'
 
 //MUI
 import Box from "@mui/material/Box";
@@ -71,19 +72,31 @@ export default function Header() {
   // }, []);
 
   return (
+    
     <div>
+            <div className='max-w-full h-12 flex justify-start items-center bg-black mb-4 text-white rounded-md '>
+            <div className='flex md:hidden'><burger /></div>
+            <div className='hidden md:flex'>
+                gkgajkl
+            </div>
+        </div>
       <div
         className={variables.navbar}
         id={`${isSticky ? variables.sticky : ""}`}>
           <div className={variables.logo_pic_div}>
 
-          <Image src='/icons/logo.png' width={100} height={100} className={variables.logo_pic}/>
+          <img src='/icons/5.png' className={variables.logo_pic}/>
           </div>
           <Link href='/' legacyBehavior>
           <a className={variables.logo}>Кайнар</a>
 
           </Link>
         <ul className={variables.ul}>
+          <li>
+            <Link href="/pets/PetList" legacyBehavior>
+              <a className={variables.a}> Питомцы</a>
+            </Link>
+          </li>
           <li>
             <Link href="/" legacyBehavior>
               <a className={variables.a}> Главная</a>

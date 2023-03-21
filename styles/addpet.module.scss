@@ -1,0 +1,118 @@
+.add{
+    position: absolute;
+        width: 100%;
+        padding-top: 16%;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        & .add_text{
+            font-size: 48px;
+            font-weight: 600;
+            color: aliceblue;
+            
+        }
+        .home {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+        }
+        .about {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+        }
+        .icon {
+            margin: 0px 10px;
+            color: white;
+        }
+    }
+    
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #E7E7E7;
+}
+
+.h2{
+    margin-top: 20px;
+}
+
+    .input_group{
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        & .input{
+            width: 60%;
+            height: 40px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin: 5px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    }
+
+
+
+.select_div{
+
+    margin: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.select{
+    //   position: relative;
+    width: 150px;
+    padding: 5px 0px;
+    margin-left: 5px;
+    border: 1px solid #fab700;
+    color: #000;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    &:hover{
+        background-color: #fab700;
+        color: #fff;
+    }
+    & .first{
+        display: none;
+    }
+    
+}
+.option{
+    background-color: #fff;
+    color: #fab700;
+    border: 1px solid #fab700;
+    font-size: 16px;
+}
+
+.option:hover{
+    background: #fab700;
+    transition: 1s;
+}
+.div{
+    margin: 5px;
+}
+
+.save_btn{
+    width: 5%;
+    padding: 5px 0px;
+    border: 1px solid #fab700;
+    color: #000;
+    border-radius: 4px;
+    text-align: center;
+    & :hover{
+        background-color: #fab700;
+        color: #fff;
+    }
+}
