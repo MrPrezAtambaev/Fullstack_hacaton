@@ -2,6 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { authContext } from "@/context/authContext";
 import { petsContext, usePets } from "@/context/petsContext";
 import { useRouter } from "next/router";
+import cats from '../../../styles/cats.module.scss'
+import dogs from '../../../styles/dogs.module.scss'
+import pet from '../../../styles/petlist.module.scss'
+import Link from 'next/link'
 import Image from "next/image";
 import axios from "axios";
 import { authAxios } from "@/utils/authAxios";
@@ -136,6 +140,7 @@ const PetCard = ({ item }) => {
             ))}
         </div>
       </div>
+          </div>
     </>
   );
 };

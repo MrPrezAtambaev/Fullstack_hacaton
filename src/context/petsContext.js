@@ -90,6 +90,22 @@ const PetContextProvider = ({ children }) => {
   //   }
   // };
 
+  const router = useRouter();
+  const fetchByParams = (query, value) => {
+  
+    const search = new URLSearchParams(router.query);
+  
+    if (value === 'all') {
+      search.delete(query);
+    } else {
+      search.set(query, value);
+    }
+  
+    const newUrl = `${router.pathname}?${search.toString()}`;
+  
+    router.push(newUrl);
+  };
+
   const values = {
     pets: state.pets,
     pages: state.pages,
@@ -97,6 +113,8 @@ const PetContextProvider = ({ children }) => {
     getPets,
     createPet,
     deletePet,
+    fetchByParams,
+    
   };
 
   return <petsContext.Provider value={values}>{children}</petsContext.Provider>;

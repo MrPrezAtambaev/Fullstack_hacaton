@@ -1,6 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { usePets } from "@/context/petsContext";
+import add from '../../../styles/addpet.module.scss'
+import variables from '../../../styles/variables.module.scss'
+import Link from "next/link";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const AddPet = () => {
   const router = useRouter();
@@ -29,13 +33,27 @@ const AddPet = () => {
     for (let i = 0; i < images.length; i++) {
       newPet.append("images", images[i]);
     }
-    // Bind the name to the post ID
 
     createPet(newPet);
     router.push("/pets/PetList/");
   }
-
+  
   return (
+    <>
+        <div className={variables.banner}>
+          <div className={add.add}>
+            <h1 className={add.add_text}>Add Pet</h1>
+            <p className={add.aboutLinks}>
+              <Link href="/" legacyBehavior>
+                <a className={add.home}>Home</a>
+              </Link>
+              <ArrowForwardIcon className={add.icon} />
+              <Link href="/" legacyBehavior>
+                <a className={add.about}>Add Pet</a>
+              </Link>
+            </p>
+          </div>
+        </div>
     <div>
       <h2 style={{ marginBottom: "30px" }}>Add Pet</h2>
       <input
