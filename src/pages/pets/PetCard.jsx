@@ -188,13 +188,14 @@ const PetCard = ({ item }) => {
                 <DeleteIcon onClick={() => deletePet(item.id)} />
               </>
             ) : null}
-                    <div>
-                {checkPostInFav ? (
-                  <FavoriteBorderIcon onClick={() => addFavorites(item.id)} />
-                ) : (
-                  <FavoriteIcon onClick={() => deleteFavorites(item.id)} />
-                )}
-              </div>
+            <div>
+              {checkPostInFav ? (
+                <FavoriteBorderIcon onClick={() => addFavorites(item.id)} />
+              ) : (
+                <FavoriteIcon onClick={() => deleteFavorites(item.id)} />
+              )}
+                    </div>
+            </div>
             <div>
               <div>
                 <>
@@ -252,7 +253,6 @@ const PetCard = ({ item }) => {
                   </Box>
                 </Modal>
               </div>
-
             </div>
           </div>
         </div>
