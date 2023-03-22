@@ -15,9 +15,9 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  useEffect(() => {
-    setError(false);
-  }, []);
+  // useEffect(() => {
+  //   setError(false);
+  // }, []);
 
   function handleSave(e) {
     e.preventDefault();
