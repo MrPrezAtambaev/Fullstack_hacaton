@@ -150,17 +150,24 @@ const PetCard = ({ item }) => {
               key={image.id}
               src={image.image}
               alt=""
-
-          />
+            />
           ))}
-        <h2 style={{ color: "black" }}>{item.name}</h2>
-        <p style={{ color: "black" }}>Desc: {item.description}</p>
-        <div className={pet.first_column}>
-        <h6 style={{ color: "black" }} className={pet.h6_first}>Age: {item.age}</h6>
-        {/* <div className={pet.vl}></div> */}
-        <h6 style={{ color: "black" }} className={pet.h6_second}><Image src='/icons/gender.png' width={24} height={24}/> {item.gender}</h6>
-        <h6 style={{ color: "black" }}><Image src='/icons/pets.png' width={24} height={24}/> {item.category}</h6>
-        </div> 
+          <h2 style={{ color: "black" }}>{item.name}</h2>
+          <p style={{ color: "black" }}>Desc: {item.description}</p>
+          <div className={pet.first_column}>
+            <h6 style={{ color: "black" }} className={pet.h6_first}>
+              Age: {item.age}
+            </h6>
+            {/* <div className={pet.vl}></div> */}
+            <h6 style={{ color: "black" }} className={pet.h6_second}>
+              <Image src="/icons/gender.png" width={24} height={24} />{" "}
+              {item.gender}
+            </h6>
+            <h6 style={{ color: "black" }}>
+              <Image src="/icons/pets.png" width={24} height={24} />{" "}
+              {item.category}
+            </h6>
+          </div>
           <div className={pet.btn_group}>
             {liked ? (
               <div>
@@ -181,88 +188,6 @@ const PetCard = ({ item }) => {
                 <DeleteIcon onClick={() => deletePet(item.id)} />
               </>
             ) : null}
-
-            <div>
-              <>
-                <ChatBubbleOutlineIcon onClick={handleOpen} />
-              </>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-              >
-                <Box sx={style} className={modal.modal}>
-          
-        )}
-        {item.owner === currentUser.email ? (
-          <>
-            <>
-            <SettingsIcon  onClick={() => router.push(`/pets/${item.id}/edit`)}/>   
-            </>
-            <>
-            <DeleteIcon  onClick={() => deletePet(item.id)}/>
-            </>
-            <FavoriteIcon onClick={() => addFavorites(item.id)}/>
-            <FavoriteBorderIcon onClick={() => deleteFavorites(item.id)}/>
-          </>
-        ) : null}
-
-          <div>
-            <>
-        <ChatBubbleOutlineIcon  onClick={handleOpen}/>
-            </>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-                  <Box sx={style} className={modal.modal}>
-                  <div>
-                    <h3 className={modal.title}>Comments:</h3>
-                    <form onSubmit={handleSubmit}>
-                      <div>
-                        <label htmlFor="owner"></label>
-                        <input
-                          type="text"
-                          id="body"
-                          name="body"
-                          required
-                          value={body}
-                          onChange={(e) => setBody(e.target.value)}
-                        />
-                        <button type="submit">
-                          <img src="/icons/send.png" width={24} height={24} />
-                        </button>
-                      </div>
-                    </form>
-                    <div>
-                      {comments.map((comment) => (
-                        <div
-                          className={modal.comment_text}
-                          key={comment.id}
-                          style={{ color: "black" }}
-                        >
-                          <p className={modal.commentP}>
-                            <img src="/icons/user.png" />: {comment.owner}
-                          </p>
-                          <p className={modal.commentP}>
-                            <img src="/icons/comm.png" />: {comment.body}
-                          </p>
-                          <p className={modal.commentP}>
-                            <img src="/icons/clock.png" />: {comment.created_at}
-                          </p>
-                          <DeleteIcon
-                            onClick={() => deleteComment(comment.id)}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </Box>
-              </Modal>
-            </div>
             <div>
               {checkPostInFav ? (
                 <FavoriteBorderIcon onClick={() => addFavorites(item.id)} />
@@ -270,9 +195,66 @@ const PetCard = ({ item }) => {
                 <FavoriteIcon onClick={() => deleteFavorites(item.id)} />
               )}
             </div>
+            <div>
+              <div>
+                <>
+                  <ChatBubbleOutlineIcon onClick={handleOpen} />
+                </>
+                <Modal
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  <Box sx={style} className={modal.modal}>
+                    <div>
+                      <h3 className={modal.title}>Comments:</h3>
+                      <form onSubmit={handleSubmit}>
+                        <div>
+                          <label htmlFor="owner"></label>
+                          <input
+                            type="text"
+                            id="body"
+                            name="body"
+                            required
+                            value={body}
+                            onChange={(e) => setBody(e.target.value)}
+                          />
+                          <button type="submit">
+                            <img src="/icons/send.png" width={24} height={24} />
+                          </button>
+                        </div>
+                      </form>
+                      <div>
+                        {comments.map((comment) => (
+                          <div
+                            className={modal.comment_text}
+                            key={comment.id}
+                            style={{ color: "black" }}
+                          >
+                            <p className={modal.commentP}>
+                              <img src="/icons/user.png" />: {comment.owner}
+                            </p>
+                            <p className={modal.commentP}>
+                              <img src="/icons/comm.png" />: {comment.body}
+                            </p>
+                            <p className={modal.commentP}>
+                              <img src="/icons/clock.png" />:{" "}
+                              {comment.created_at}
+                            </p>
+                            <DeleteIcon
+                              onClick={() => deleteComment(comment.id)}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Box>
+                </Modal>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </>
   );
