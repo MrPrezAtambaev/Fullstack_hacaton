@@ -2,13 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { authContext } from "@/context/authContext";
 import { petsContext, usePets } from "@/context/petsContext";
 import { useRouter } from "next/router";
-import cats from '../../../styles/cats.module.scss'
-import dogs from '../../../styles/dogs.module.scss'
-import pet from '../../../styles/petlist.module.scss'
-import Link from 'next/link'
 import Image from "next/image";
 import axios from "axios";
 import { authAxios } from "@/utils/authAxios";
+import { useFavorites } from "@/context/favContext";
 
 const PetCard = ({ item }) => {
   const { deletePet, getPets } = useContext(petsContext);
@@ -17,18 +14,19 @@ const PetCard = ({ item }) => {
 
   const petId = router.query.petId;
 
+  //! like
   const [liked, setLiked] = useState(
     item.likes.some((like) => like.owner === currentUser.email)
   );
 
   const handleLike = async (like) => {
     try {
-      const response = await authAxios.post(`/post/pets/${item.id}/like/`, {
+      const res = await authAxios.post(`/post/pets/${item.id}/like/`, {
         is_like: true,
         post: like.post,
         like_id: like.id,
       });
-      console.log(response);
+      console.log(res.data.status);
       setLiked(true);
       getPets(); // помечаем, что поставили лайк
     } catch (error) {
@@ -37,33 +35,45 @@ const PetCard = ({ item }) => {
   };
   const handleUnLike = async () => {
     try {
-      const response = await authAxios.post(`/post/pets/${item.id}/like/`);
-      console.log(response);
+      const res = await authAxios.post(`/post/pets/${item.id}/like/`);
+      console.log(res.data.status);
       setLiked(false);
       getPets(); // помечаем, что поставили лайк
     } catch (error) {
       console.error(error);
     }
   };
-
+  //! like end
   //! comment
   const [body, setBody] = useState("");
   const [post, setPost] = useState("");
   const [comments, setComments] = useState([]);
 
-  const getComments = async () => {
-    // add postId parameter
+  const getComments = async (postId) => {
     try {
-      const response = await authAxios.get(`/feedback/comment/`); // add query parameter to filter by post ID
-      setComments(response.data);
+      const res = await authAxios.get(`/feedback/comment/`);
+      let commentList = Array.isArray(res.data.results)
+        ? res.data.results.filter((elem) => elem.post === postId)
+        : [];
+      setComments(commentList);
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
   };
 
   useEffect(() => {
-    getComments(item.id); // pass the post ID to getComments
+    getComments(item.id);
   }, []);
+
+  const deleteComment = async (id, postId) => {
+    try {
+      const { data } = await authAxios.delete(`/feedback/comment/${id}`);
+      console.log(data);
+      getComments(postId);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -81,6 +91,15 @@ const PetCard = ({ item }) => {
       console.error("Error creating comment:", error);
     }
   };
+  //! comment end
+
+  //! Favorite
+
+  const { addFavorites, getFavorites, deleteFavorites } = useFavorites();
+
+  useEffect(() => {
+    getFavorites();
+  }, []);
 
   return (
     <>
@@ -131,16 +150,26 @@ const PetCard = ({ item }) => {
             </div>
             <button type="submit">Save Comm</button>
           </form>
-          {Array.isArray(comments) &&
-            comments.map((comment) => (
-              <div key={comment.id}>
-                <p>{comment.body}</p>
-                <p>Post: {comment.post}</p>
+          <div>
+            {comments.map((comment) => (
+              <div key={comment.id} style={{ color: "white" }}>
+                <p>Comm: {comment.body}</p>
+                <p>Author: {comment.owner}</p>
+                <p>Created at: {comment.created_at}</p>
+                {currentUser.email === comment.owner && (
+                  <button onClick={() => deleteComment(comment.id, item.id)}>
+                    Delete
+                  </button>
+                )}
               </div>
             ))}
+          </div>
+          <div>
+            <button onClick={() => addFavorites(item.id)}>Add Fav</button>
+            <button onClick={() => deleteFavorites(item.id)}>Delete Fav</button>
+          </div>
         </div>
       </div>
-          </div>
     </>
   );
 };

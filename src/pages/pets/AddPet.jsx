@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { usePets } from "@/context/petsContext";
-import add from '../../../styles/addpet.module.scss'
-import variables from '../../../styles/variables.module.scss'
+import add from "../../../styles/addpet.module.scss";
+import variables from "../../../styles/variables.module.scss";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
@@ -37,82 +37,83 @@ const AddPet = () => {
     createPet(newPet);
     router.push("/pets/PetList/");
   }
-  
+
   return (
     <>
-        <div className={variables.banner}>
-          <div className={add.add}>
-            <h1 className={add.add_text}>Add Pet</h1>
-            <p className={add.aboutLinks}>
-              <Link href="/" legacyBehavior>
-                <a className={add.home}>Home</a>
-              </Link>
-              <ArrowForwardIcon className={add.icon} />
-              <Link href="/" legacyBehavior>
-                <a className={add.about}>Add Pet</a>
-              </Link>
-            </p>
-          </div>
+      <div className={variables.banner}>
+        <div className={add.add}>
+          <h1 className={add.add_text}>Add Pet</h1>
+          <p className={add.aboutLinks}>
+            <Link href="/" legacyBehavior>
+              <a className={add.home}>Home</a>
+            </Link>
+            <ArrowForwardIcon className={add.icon} />
+            <Link href="/" legacyBehavior>
+              <a className={add.about}>Add Pet</a>
+            </Link>
+          </p>
         </div>
-    <div>
-      <h2 style={{ marginBottom: "30px" }}>Add Pet</h2>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => setImages([...images, ...e.target.files])}
-        multiple
-      />
-      <input
-        type="number"
-        placeholder="Age"
-        value={age}
-        onChange={(e) => setAge(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Description"
-        value={desc}
-        onChange={(e) => setDesc(e.target.value)}
-      />
-      <div>
-        <label>
-          Gender:
-          <select
-            value={gender}
-            onChange={(e) => {
-              setGender(e.target.value);
-            }}
-          >
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </label>
       </div>
       <div>
-        <label>
-          Category:
-          <select
-            value={category}
-            onChange={(e) => {
-              setCategory(e.target.value);
-            }}
-          >
-            <option value="">Select Category</option>
-            <option value="cats">Cat</option>
-            <option value="dogs">Dog</option>
-          </select>
-        </label>
+        <h2 style={{ marginBottom: "30px" }}>Add Pet</h2>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImages([...images, ...e.target.files])}
+          multiple
+        />
+        <input
+          type="number"
+          placeholder="Age"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Description"
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
+        />
+        <div>
+          <label>
+            Gender:
+            <select
+              value={gender}
+              onChange={(e) => {
+                setGender(e.target.value);
+              }}
+            >
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>
+            Category:
+            <select
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value);
+              }}
+            >
+              <option value="">Select Category</option>
+              <option value="cats">Cat</option>
+              <option value="dogs">Dog</option>
+            </select>
+          </label>
+        </div>
+        <button onClick={() => handleSave()}>Save</button>
+        {/* Pass the post ID to the handleSave function */}
       </div>
-      <button onClick={() => handleSave()}>Save</button>
-      {/* Pass the post ID to the handleSave function */}
-    </div>
+    </>
   );
 };
 
