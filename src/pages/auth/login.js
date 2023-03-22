@@ -21,9 +21,9 @@ const Login = () => {
     handleLogin(formData, email, router);
   }
 
-  useEffect(() => {
-    setError(false);
-  }, []);
+  // useEffect(() => {
+  //   setError(false);
+  // }, []);
 
   return error ? (
     <h2>{error}</h2>

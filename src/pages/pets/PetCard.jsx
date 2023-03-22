@@ -145,7 +145,7 @@ const PetCard = ({ item }) => {
       <div className={pet.card_container}>
         <div className={pet.card}>
           {item.images.map((image) => (
-            <img
+            <Image
               className={pet.card_img}
               key={image.id}
               src={image.image}
@@ -160,11 +160,11 @@ const PetCard = ({ item }) => {
             </h6>
             {/* <div className={pet.vl}></div> */}
             <h6 style={{ color: "black" }} className={pet.h6_second}>
-              <Image src="/icons/gender.png" width={24} height={24} />{" "}
+              <Image src="/icons/gender.png" width={24} height={24} alt="" />{" "}
               {item.gender}
             </h6>
             <h6 style={{ color: "black" }}>
-              <Image src="/icons/pets.png" width={24} height={24} />{" "}
+              <Image src="/icons/pets.png" width={24} height={24} alt="" />{" "}
               {item.category}
             </h6>
           </div>
@@ -221,7 +221,12 @@ const PetCard = ({ item }) => {
                             onChange={(e) => setBody(e.target.value)}
                           />
                           <button type="submit">
-                            <img src="/icons/send.png" width={24} height={24} />
+                            <Image
+                              src="/icons/send.png"
+                              width={24}
+                              height={24}
+                              alt=""
+                            />
                           </button>
                         </div>
                       </form>
@@ -233,13 +238,15 @@ const PetCard = ({ item }) => {
                             style={{ color: "black" }}
                           >
                             <p className={modal.commentP}>
-                              <img src="/icons/user.png" />: {comment.owner}
+                              <Image src="/icons/user.png" alt="" />:{" "}
+                              {comment.owner}
                             </p>
                             <p className={modal.commentP}>
-                              <img src="/icons/comm.png" />: {comment.body}
+                              <Image src="/icons/comm.png" alt="" />:{" "}
+                              {comment.body}
                             </p>
                             <p className={modal.commentP}>
-                              <img src="/icons/clock.png" />:{" "}
+                              <Image src="/icons/clock.png" alt="" />:{" "}
                               {comment.created_at}
                             </p>
                             <DeleteIcon

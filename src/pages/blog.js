@@ -18,7 +18,6 @@ export default function Blog() {
               <a className={about.about}>Blog</a>
             </Link>
           </p>
-          <img></img>
         </div>
       </div>
     </div>
