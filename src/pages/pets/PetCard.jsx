@@ -194,7 +194,6 @@ const PetCard = ({ item }) => {
               ) : (
                 <FavoriteIcon onClick={() => deleteFavorites(item.id)} />
               )}
-                    </div>
             </div>
             <div>
               <div>
