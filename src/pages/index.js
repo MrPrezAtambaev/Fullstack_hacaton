@@ -19,6 +19,8 @@ export default function Index() {
                 <Image
                   src="https://images.pexels.com/photos/2173872/pexels-photo-2173872.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
                   className={home.cat_img}
+                  width="480"
+                  height="480"
                   alt=""
                 />
               </a>

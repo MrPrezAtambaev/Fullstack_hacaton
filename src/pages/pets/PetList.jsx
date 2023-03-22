@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { usePets } from "@/context/petsContext";
 import PetCard from "./PetCard";
 import cats from "../../../styles/cats.module.scss";
-import SideBar from "./SideBar";
 import pet from "../../../styles/petlist.module.scss";
 import Pagination from "@mui/material/Pagination";
 import { PaginationItem } from "@mui/material";
