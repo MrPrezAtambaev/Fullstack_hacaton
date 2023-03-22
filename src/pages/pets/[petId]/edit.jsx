@@ -174,6 +174,8 @@ const EditPet = () => {
       />
       <button type="submit">Save changes</button>
     </form>
+
+  </>
   );
 };
 

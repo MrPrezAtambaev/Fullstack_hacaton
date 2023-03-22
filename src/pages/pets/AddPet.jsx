@@ -113,6 +113,7 @@ const AddPet = () => {
       <button onClick={() => handleSave()}>Save</button>
       {/* Pass the post ID to the handleSave function */}
     </div>
+    </>
   );
 };
 

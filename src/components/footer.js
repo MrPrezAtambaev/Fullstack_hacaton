@@ -6,6 +6,7 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 import Link from "next/link";
+import home from '../../styles/homepage.module.scss'
 
 const Footer = () => {
   return (
@@ -16,12 +17,12 @@ const Footer = () => {
       <section className="h-auto">
         <MDBContainer className="text-center text-md-start ">
           <MDBRow className="pt-4">
-            <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
+            <MDBCol md="3" lg="4" xl="3" className="mx-auto ">
               <h6 className="text-uppercase fw-bold mb-4 text-light">
                 <MDBIcon icon="gem" className="me-3" />
                 About US
               </h6>
-              <p>
+              <p className={home.footer_text}>
                 Few would argue that, despite the advanc ements off eminism over
                 the past three decades, women still face a double standard when
                 it comes to their behavior. While men’s borderline-inappropriate
@@ -31,8 +32,8 @@ const Footer = () => {
               </p>
             </MDBCol>
 
-            <MDBCol md="2" lg="2" xl="2" className="mx-auto mb-4">
-              <h6 className="text-uppercase fw-bold mb-4 text-light">
+            <MDBCol md="2" lg="2" xl="2" className="mx-auto ">
+              <h6 className="text-uppercase fw-bold  text-light">
                 Useful links
               </h6>
               <p>
@@ -57,7 +58,7 @@ const Footer = () => {
               </p>
             </MDBCol>
 
-            <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4 mt-5">
+            <MDBCol md="3" lg="2" xl="2" className="mx-auto mt-5">
               <p>
                 <Link href="/" legacyBehavior>
                   <a className="text-reset">Pricing</a>
@@ -75,7 +76,7 @@ const Footer = () => {
               </p>
             </MDBCol>
 
-            <MDBCol md="4" lg="3" xl="3" className="mx-auto mb-md-0 mb-4">
+            <MDBCol md="4" lg="3" xl="3" className="mx-auto mb-md-0 ">
               <h6 className="text-uppercase fw-bold mb-4 text-light">
                 Contact US
               </h6>

@@ -129,3 +129,20 @@
     margin-left: 62%;
     margin-top: 3px;
 }
+
+
+
+@media all and (max-width:321px){
+    .notes_container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .notes_btn{
+        margin-left: 61px;
+    }
+    .become{
+        display: none;
+    }
+}

@@ -130,3 +130,60 @@ border-radius: 1px black;
     cursor: pointer;
     position: relative;
 }
+
+
+
+@media all and (max-width: 768px){
+    .cat_img{
+        width: 95%;
+        height: 95%;
+    }
+    .dog_img{
+        width: 95%;
+        height: 95%;
+    }
+    .right_col{
+        padding-left: 25px;
+        padding-right: 15px;
+        font-size: 14px;
+    }
+
+}
+
+@media all and (max-width: 425px){
+    .details_img{
+        height: 244.5px;
+    }
+    .footer_text{
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+    .banner{
+        width: 100%;
+        height: 425px;
+        // background:url(https://img.freepik.com/free-photo/black-cat-with-yellow-eyes-looking-camera-with-blurred_181624-1920.jpg?w=2000)
+    }
+    .container{
+        top: 160px;
+    }
+    .asdas{
+        height: 252px;
+    }
+    .details{
+        display: flex;
+        flex-direction: column;
+        & .left_col{
+            width: 100%;
+        }
+        & .right_col{
+            width: 100%;
+            text-align: center;
+        }
+    }
+    .lorem{
+        width: 100%;
+        color: aqua;
+    }
+
+
+}

@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useReducer, useState } from "react";
 import { authAxios } from "@/utils/authAxios";
+import { useRouter } from "next/router";
 
 export const petsContext = React.createContext();
 export const usePets = () => useContext(petsContext);
@@ -83,7 +84,7 @@ const PetContextProvider = ({ children }) => {
   // const getOneComment = async (id) => {
   //   try {
   //     const { data } = await authAxios(`/feedback/comment/${id}`);
-  //     console.log(data);
+  //     console.log(data); 
   //     setOneComment(data);
   //   } catch (e) {
   //     console.log(e);

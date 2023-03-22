@@ -5,9 +5,8 @@ import Link from "next/link";
 export default function Dogs() {
   return (
     <>
-
-    <div className={cats.cd_banner}>
-      <div className={dogs.card_container}>
+     <div className={cats.cd_banner}>
+       <div className={dogs.card_container}>
         <div className={dogs.card}>
           <Link className={dogs.link_1} href={"/details/:id"} legacyBehavior>
             <a className={dogs.link}>
@@ -15,9 +14,9 @@ export default function Dogs() {
               <p className={dogs.pet_name}>Уолтэр Уайт</p>
             </a>
           </Link>
-
+        </div>
         </div>
       </div>
     </>
-  );
+    );
 }

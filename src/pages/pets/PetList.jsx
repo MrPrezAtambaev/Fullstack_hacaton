@@ -3,7 +3,7 @@ import { usePets } from "@/context/petsContext";
 import PetCard from "./PetCard";
 import cats from "../../../styles/cats.module.scss";
 import pet from '../../../styles/petlist.module.scss'
-// import SideBar from "./SideBar";
+import SideBar from "./SideBar";
 
 const PetList = () => {
   const { getPets, pets, pages } = usePets();

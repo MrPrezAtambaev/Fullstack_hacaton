@@ -4,16 +4,48 @@ import { petsContext, usePets } from "@/context/petsContext";
 import { useRouter } from "next/router";
 import cats from '../../../styles/cats.module.scss'
 import dogs from '../../../styles/dogs.module.scss'
+import modal from '../../../styles/modal.module.scss'
 import pet from '../../../styles/petlist.module.scss'
 import Link from 'next/link'
 import Image from "next/image";
 import axios from "axios";
 import { authAxios } from "@/utils/authAxios";
+//Mui imports
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+//mui icons
+import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import SettingsIcon from '@mui/icons-material/Settings';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+
+//other icons
+import gender from '../../../public/icons/gender.png'
+
 
 const PetCard = ({ item }) => {
   const { deletePet, getPets } = useContext(petsContext);
   const { currentUser } = useContext(authContext);
   const router = useRouter();
+  //mui
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
 
   const petId = router.query.petId;
 
@@ -51,18 +83,22 @@ const PetCard = ({ item }) => {
   const [post, setPost] = useState("");
   const [comments, setComments] = useState([]);
 
-  const getComments = async () => {
-    // add postId parameter
+  const getComments = async (postId) => {
     try {
-      const response = await authAxios.get(`/feedback/comment/`); // add query parameter to filter by post ID
-      setComments(response.data);
+      const res = await authAxios.get(`/feedback/comment/`);
+      console.log(res.data);
+      let commentList = Array.isArray(res.data.results)
+        ? res.data.results.filter((elem) => elem.post === postId)
+        : [];
+      setComments(commentList);
+      console.log(commentList);
     } catch (error) {
       console.error("Error fetching comments:", error);
     }
   };
 
   useEffect(() => {
-    getComments(item.id); // pass the post ID to getComments
+    getComments(item.id);
   }, []);
 
   const handleSubmit = async (event) => {
@@ -82,65 +118,101 @@ const PetCard = ({ item }) => {
     }
   };
 
+
+
+
   return (
     <>
-      <div>
+    <div className={pet.card_container}>
+
+      <div className={pet.card}>
         {item.images.map((image) => (
           <img
-            key={image.id}
-            src={image.image}
-            alt={image.name}
-            style={{ width: "100px", height: "100px" }}
+          className={pet.card_img}
+          key={image.id}
+          src={image.image}
+          alt={image.name}
+
           />
-        ))}
-        <h2 style={{ color: "black" }}>Name: {item.name}</h2>
-        <h3 style={{ color: "black" }}>Age: {item.age}</h3>
-        <h4 style={{ color: "black" }}>Gender: {item.gender}</h4>
+          ))}
+        <h2 style={{ color: "black" }}>{item.name}</h2>
         <p style={{ color: "black" }}>Desc: {item.description}</p>
-        <p style={{ color: "black" }}>Category: {item.category}</p>
+        <div className={pet.first_column}>
+        <h6 style={{ color: "black" }} className={pet.h6_first}>Age: {item.age}</h6>
+        {/* <div className={pet.vl}></div> */}
+        <h6 style={{ color: "black" }} className={pet.h6_second}><Image src='/icons/gender.png' width={24} height={24}/> {item.gender}</h6>
+        <h6 style={{ color: "black" }}><Image src='/icons/pets.png' width={24} height={24}/> {item.category}</h6>
+        </div> 
+
+        <div className={pet.btn_group}> 
         {liked ? (
-          <button onClick={() => handleUnLike(item.likes)}>
-            Unlike: {item.likes_count}
-          </button>
+          <div>
+            <ThumbDownAltIcon onClick={() => handleUnLike(item.likes)} 
+            />
+             {item.likes_count}
+          </div>
         ) : (
-          <button onClick={() => handleLike(item.likes)}>
-            Like: {item.likes_count}
-          </button>
+          <div>
+          <ThumbUpOffAltIcon  onClick={() => handleLike(item.likes)}
+          />
+             {item.likes_count}
+          </div>
         )}
         {item.owner === currentUser.email ? (
           <>
-            <button onClick={() => router.push(`/pets/${item.id}/edit`)}>
-              Update
-            </button>
-            <button onClick={() => deletePet(item.id)}>Delete</button>
+            <>
+            <SettingsIcon  onClick={() => router.push(`/pets/${item.id}/edit`)}/>   
+            </>
+            <>
+            <DeleteIcon  onClick={() => deletePet(item.id)}/>
+            </>
           </>
         ) : null}
-        <div>
-          <h3>Comments:</h3>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="owner">Body:</label>
-              <input
-                type="text"
-                id="body"
-                name="body"
-                required
-                value={body}
-                onChange={(e) => setBody(e.target.value)}
-              />
+
+          <div>
+            <>
+        <ChatBubbleOutlineIcon  onClick={handleOpen}/>
+            </>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+                  <Box sx={style} className={modal.modal}>
+                  <div>
+                    <h3 className={modal.title}>Comments:</h3>
+                    <form onSubmit={handleSubmit}>
+                      <div>
+                        <label htmlFor="owner"></label>
+                        <input
+                          type="text"
+                          id="body"
+                          name="body"
+                          required
+                          value={body}
+                          onChange={(e) => setBody(e.target.value)}
+                          />
+                      <button type="submit"><img src="/icons/send.png" width={24} height={24}/></button>
+                      </div>
+                    </form>
+                    <div>
+                            {comments.map((comment) => (
+                              <div className={modal.comment_text}key={comment.id} style={{ color: "black" }}>
+                                <p className={modal.commentP}><img src="/icons/user.png"/>: {comment.owner}</p>
+                                <p className={modal.commentP}><img src="/icons/comm.png"/>: {comment.body}</p>
+                                <p className={modal.commentP}><img src="/icons/clock.png"/>: {comment.created_at}</p>
+                              </div>
+                            ))}
+                    </div>
+
+                  </div>
+                  </Box>
+                </Modal>
             </div>
-            <button type="submit">Save Comm</button>
-          </form>
-          {Array.isArray(comments) &&
-            comments.map((comment) => (
-              <div key={comment.id}>
-                <p>{comment.body}</p>
-                <p>Post: {comment.post}</p>
-              </div>
-            ))}
+          </div>
         </div>
       </div>
-          </div>
     </>
   );
 };
