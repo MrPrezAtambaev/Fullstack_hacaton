@@ -14,7 +14,7 @@ const FavContextProvider = ({ children }) => {
       setFavorites(data.results);
       favoriteIds = data.results.map((favorite) => favorite.id);
     } catch (e) {
-      console.log(e);
+  
     }
   };
 
@@ -32,7 +32,7 @@ const FavContextProvider = ({ children }) => {
       favoriteIds.push(data.id);
       getFavorites();
     } catch (e) {
-      console.log(e);
+
     }
   };
 
@@ -51,7 +51,7 @@ const FavContextProvider = ({ children }) => {
       // Remove the deleted favorite from the favorites array
       getFavorites(petId);
     } catch (e) {
-      console.log(e);
+
     }
   };
 

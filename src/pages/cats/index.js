@@ -5,6 +5,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Image from 'next/image'
 
 
+
 export default function Cats() {
   return (
     <>

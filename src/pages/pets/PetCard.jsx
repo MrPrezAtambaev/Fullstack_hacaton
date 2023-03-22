@@ -150,25 +150,17 @@ const PetCard = ({ item }) => {
               key={image.id}
               src={image.image}
               alt=""
-            />
-          ))}
-          <h2 style={{ color: "black" }}>{item.name}</h2>
-          <p style={{ color: "black" }}>Desc: {item.description}</p>
-          <div className={pet.first_column}>
-            <h6 style={{ color: "black" }} className={pet.h6_first}>
-              Age: {item.age}
-            </h6>
-            {/* <div className={pet.vl}></div> */}
-            <h6 style={{ color: "black" }} className={pet.h6_second}>
-              <Image src="/icons/gender.png" width={24} height={24} />{" "}
-              {item.gender}
-            </h6>
-            <h6 style={{ color: "black" }}>
-              <Image src="/icons/pets.png" width={24} height={24} />{" "}
-              {item.category}
-            </h6>
-          </div>
 
+          />
+          ))}
+        <h2 style={{ color: "black" }}>{item.name}</h2>
+        <p style={{ color: "black" }}>Desc: {item.description}</p>
+        <div className={pet.first_column}>
+        <h6 style={{ color: "black" }} className={pet.h6_first}>Age: {item.age}</h6>
+        {/* <div className={pet.vl}></div> */}
+        <h6 style={{ color: "black" }} className={pet.h6_second}><Image src='/icons/gender.png' width={24} height={24}/> {item.gender}</h6>
+        <h6 style={{ color: "black" }}><Image src='/icons/pets.png' width={24} height={24}/> {item.category}</h6>
+        </div> 
           <div className={pet.btn_group}>
             {liked ? (
               <div>
@@ -201,6 +193,32 @@ const PetCard = ({ item }) => {
                 aria-describedby="modal-modal-description"
               >
                 <Box sx={style} className={modal.modal}>
+          
+        )}
+        {item.owner === currentUser.email ? (
+          <>
+            <>
+            <SettingsIcon  onClick={() => router.push(`/pets/${item.id}/edit`)}/>   
+            </>
+            <>
+            <DeleteIcon  onClick={() => deletePet(item.id)}/>
+            </>
+            <FavoriteIcon onClick={() => addFavorites(item.id)}/>
+            <FavoriteBorderIcon onClick={() => deleteFavorites(item.id)}/>
+          </>
+        ) : null}
+
+          <div>
+            <>
+        <ChatBubbleOutlineIcon  onClick={handleOpen}/>
+            </>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+                  <Box sx={style} className={modal.modal}>
                   <div>
                     <h3 className={modal.title}>Comments:</h3>
                     <form onSubmit={handleSubmit}>
@@ -254,6 +272,7 @@ const PetCard = ({ item }) => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
