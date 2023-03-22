@@ -1,35 +1,55 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { usePets } from "@/context/petsContext";
 import PetCard from "./PetCard";
 import cats from "../../../styles/cats.module.scss";
-import pet from '../../../styles/petlist.module.scss'
 import SideBar from "./SideBar";
+import pet from "../../../styles/petlist.module.scss";
+import Pagination from "@mui/material/Pagination";
+import { PaginationItem } from "@mui/material";
+import Link from "@mui/material/Link";
+import { useRouter } from "next/router";
 
 const PetList = () => {
+  const router = useRouter();
   const { getPets, pets, pages } = usePets();
-  // const [isSideBar, setIsSideBar] = useState(true);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    getPets();
-  }, []);
+    const currentPage = parseInt(router.query.page || "1", 10);
+    setPage(currentPage);
+    getPets(currentPage);
+  }, [router.query]);
 
-  // function changeSideBarStatus() {
-  //   setIsSideBar(!isSideBar);
-  // };
+  const handleChangePage = (e, value) => {
+    e.preventDefault();
+    setPage(value);
+    router.push(`/pets/PetList/?page=${value}`);
+  };
 
-  // console.log(pets);
   return (
     <div className={cats.cd_banner}>
-      {/* <button onClick={changeSideBarStatus}>Filter&Search M</button> */}
-
-      {/* <SideBar isSideBar={isSideBar}/> */}
-      <div className={pet.card_container}> 
-      {pets && pets.results ? (
-        pets.results.map((item) => <PetCard key={item.id} item={item} />)
+      <div className={pet.card_container}>
+        {pets && pets.results ? (
+          pets.results.map((item) => <PetCard key={item.id} item={item} />)
         ) : (
           <h3>Loading...</h3>
-          )}
-          </div>
+        )}
+      </div>
+      <Pagination
+        count={pages}
+        page={page}
+        onChange={handleChangePage}
+        style={{ color: "black" }}
+        renderItem={(item) => (
+          <Link href={`/pets/PetList/?page=${item.page}`} passHref>
+            <PaginationItem
+              component="p"
+              {...item}
+              onClick={(e) => handleChangePage(e, item.page)}
+            />
+          </Link>
+        )}
+      />
     </div>
   );
 };

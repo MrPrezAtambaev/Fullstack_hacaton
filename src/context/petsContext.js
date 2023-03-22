@@ -13,7 +13,6 @@ const INIT_STATE = {
 function reducer(state = INIT_STATE, action) {
   switch (action.type) {
     case "GET_PETS":
-      console.log("Payload get_one:", action.payload);
       return {
         ...state,
         pets: action.payload,
@@ -27,8 +26,6 @@ function reducer(state = INIT_STATE, action) {
 
 const PetContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
-  const [comments, setComments] = useState([]);
-  const [oneComment, setOneComment] = useState(null);
 
   const getPets = useCallback(async () => {
     try {
@@ -71,39 +68,18 @@ const PetContextProvider = ({ children }) => {
     [getPets]
   );
 
-  // const deleteComment = async (id) => {
-  //   try {
-  //     const { data } = await authAxios.delete(`/feedback/comment/${id}`);
-  //     console.log(data);
-  //     getComments(id);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-
-  // const getOneComment = async (id) => {
-  //   try {
-  //     const { data } = await authAxios(`/feedback/comment/${id}`);
-  //     console.log(data); 
-  //     setOneComment(data);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-
   const router = useRouter();
   const fetchByParams = (query, value) => {
-  
     const search = new URLSearchParams(router.query);
-  
-    if (value === 'all') {
+
+    if (value === "all") {
       search.delete(query);
     } else {
       search.set(query, value);
     }
-  
+
     const newUrl = `${router.pathname}?${search.toString()}`;
-  
+
     router.push(newUrl);
   };
 
@@ -115,7 +91,6 @@ const PetContextProvider = ({ children }) => {
     createPet,
     deletePet,
     fetchByParams,
-    
   };
 
   return <petsContext.Provider value={values}>{children}</petsContext.Provider>;
