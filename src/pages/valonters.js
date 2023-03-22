@@ -1,14 +1,15 @@
 import vol from '../../styles/volunteers.module.scss'
-import variables from "../../styles/variables.module.scss";
+import home from "../../styles/homepage.module.scss";
 import Link from 'next/link';
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+
 
 
 export default function Valonters() {
 
   return (
     <>
-        <div className={variables.banner}>
+        <div className={home.banner}>
           <div className={vol.become}>
             <h1 className={vol.become_text}>Become a Volunteer</h1>
             <p className={vol.aboutLinks}>
@@ -43,31 +44,31 @@ export default function Valonters() {
           <div className={vol.checkboxes}>
             <label>
               <input className={vol.checkbox} type='checkbox'/>
-              Понедельник
+              Пн.
             </label>
             <label>
               <input className={vol.checkbox} type='checkbox'/>
-              Вторник
+              Вт.
             </label>
             <label>
               <input className={vol.checkbox} type='checkbox'/>
-              Среда
+              Ср.
             </label>
             <label>
               <input className={vol.checkbox} type='checkbox'/>
-              Четверг
+              Чт.
             </label>
             <label>
               <input className={vol.checkbox} type='checkbox'/>
-              Пятница
+              Пт.
             </label>
             <label>
               <input className={vol.checkbox} type='checkbox'/>
-              Суббота
+              Сб.
             </label>
             <label>
               <input className={vol.checkbox} type='checkbox'/>
-              Воскресенье
+              Вск.
             </label>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import about from "../../styles/about.module.scss";
+import about from "../../styles/about.module.scss";   
 import variables from "../../styles/variables.module.scss";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
@@ -7,6 +7,7 @@ import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 export default function About() {
   return (
     <>
+      <div className={about.container}>
       <div className={variables.banner}>
 
         <div className={about.text}>
@@ -25,31 +26,13 @@ export default function About() {
         </div>
       </div>
       <section className={about.videoArea}>
-        <div className={about.contain}>
           <div className={about.photoArea}>
-            <div className={about.padd}>
+
               <div className={about.picture}>
-                <div className={about.overplay}></div>
-                <Link
-                  href="https://www.youtube.com/watch?v=ARA0AxrnHdM"
-                  legacyBehavior
-                >
-                  <a className={about.playBtn}></a>
-                </Link>
+                <img src='https://cdn.mos.cms.futurecdn.net/ASHH5bDmsp6wnK6mEfZdcU.jpg' className={about.dog_picture}/>
               </div>
-              <div className={about.desc}>
-                <h4 className={about.desc1}>
-                  Watch this video how they live here
-                </h4>
-                <p className={about.desc2}>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim.
-                </p>
-              </div>
-            </div>
+
           </div>
-        </div>
       </section>
       <section className={about.fav}>
         <div className={about.row}>
@@ -69,7 +52,7 @@ export default function About() {
                 src="https://preview.colorlib.com/theme/animalshelter/img/about-img.jpg.webp"
                 alt=""
                 className={about.img}
-              />
+                />
             </div>
             <div className={about.rightPage}>
               <h1 className={about.globally}>
@@ -107,6 +90,7 @@ export default function About() {
           </div>
         </div>
       </section>
+                </div>
     </>
   );
 }

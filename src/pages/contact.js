@@ -1,6 +1,6 @@
 import Link from "next/link";
 import about from "../../styles/about.module.scss";
-import variables from "../../styles/variables.module.scss";
+import home from "../../styles/homepage.module.scss";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import contact from "../../styles/contact.module.scss";
@@ -24,7 +24,7 @@ export default function Contact() {
   };
   return (
     <>
-      <div className={variables.banner}>
+      <div className={home.banner}>
         <div className={about.text}>
           <div className={about.aboutContent}>
             <h1 className={about.aboutText}>Contact</h1>
@@ -41,15 +41,19 @@ export default function Contact() {
         </div>
       </div>
       <section className={contact.sect}>
+        <div className={contact.map}>
+
         <LoadScript googleMapsApiKey="AIzaSyCfr2nJWlKRb7loxHs-gtxbYqMJVtNFrKc">
           <GoogleMap
             mapContainerStyle={mapStyles}
             zoom={13}
             center={defaultCenter}
-          >
+            >
             <Marker position={{ lat: 42.941767, lng: 74.591825 }} />
           </GoogleMap>
         </LoadScript>
+            </div>
+      <div className={contact.container}>
         <div className={contact.all}>
           <div className={contact.address}>
             <div className={contact.single}>
@@ -84,23 +88,20 @@ export default function Contact() {
                     type="text"
                     placeholder="Enter your name"
                     className={contact.input}
-                  />
+                    />
                   <input
                     type="text"
                     placeholder="Enter email address"
                     className={contact.input}
-                  />
+                    />
                   <input
                     type="text"
                     placeholder="Enter your subject"
                     className={contact.input}
-                  />
+                    />
                 </div>
                 <div className={contact.right}>
-                  <textarea
-                    className={contact.textarea}
-                    placeholder="Message"
-                  />
+                  <textarea className={contact.textarea}> asdkjaslkdj</textarea>
                 </div>
                 <div className={contact.btn}>
                   <button className={contact.send}>Send Message</button>
@@ -109,6 +110,7 @@ export default function Contact() {
             </form>
           </div>
         </div>
+      </div>      
       </section>
     </>
   );

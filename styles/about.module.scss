@@ -1,3 +1,7 @@
+.container{
+    width: 100%;
+}
+
 .text {
     width: 100%;
     display: flex;
@@ -49,13 +53,7 @@
     margin-bottom: 100px;
 }
 
-.contain {
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
+
 .photoArea {
     display: flex;
     width: 100%;
@@ -66,10 +64,14 @@
     // margin-left: -55px;
 }
 
-.picture {
-    background: url('https://preview.colorlib.com/theme/animalshelter/img/video-bg.jpg.webp') no-repeat center;
-    background-size: cover;
-    height: 370px;
+.picture {  
+    width: 100%;
+    height: 100%;
+}
+.dog_picture{
+    width: 100%;
+    height: auto;
+    padding: 0%;
 }
 .playBtn {
     display: flex;
@@ -77,11 +79,11 @@
     justify-content: center;
 }
 .desc {
-    width: 95%;
+    width: 100%;
     .desc1 {
     margin-top: 40px;
     margin-bottom: 15px;
-    width: 95%;
+    width: 100%;
     color: #000;
     &::selection {
         background-color: #fab700;
@@ -99,31 +101,26 @@
     }
 }
 
-.padd{
-    width: 55%;
-}
+// .padd{
+//     width: 55%;
+// }
 
-.fav {
-    padding: 120px 0;
-}
+
 .row {
-    width: 80%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: 142px;
-    margin-left: 142px;
-    padding-bottom: 40px;
+    width: 100%;
+
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     padding-top: 40px;
     // margin-left: -15px;
     // margin-right: -15px;
     background-color: #f9f9ff;
     .favPet {
-        text-align: left;
+        text-align: center;
         & .select {
-            margin-left: 20px;
+            margin: 10px;
             color: #000;
             &::selection {
                 background-color: #fab700;
@@ -133,16 +130,15 @@
     }
     .fillBtn {
         text-align: right;
-        & .yellowBtn {
-            margin-right: 20px;
-        }
+
     }
 }
 .yellowBtn {
     background-color: #fab700;
     line-height: 42px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
+
     border: 1px solid transparent;
     color: #fff;
     display: inline-block;
@@ -166,8 +162,7 @@
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    margin-left: -15px;
-    margin-right: -15px;
+
 }
 .leftPage {
     padding: 0;
@@ -178,12 +173,11 @@
     }
 }
 .rightPage {
-    padding-right: 20%;
-    padding-left: 4%;
-    width: 60%;
+    margin: 10%;
+    width: 100%;
     .globally {
       padding: 20px 0;
-      font-size: 36px;
+      font-size: 30px;
       margin: 0;
       color: #000;
       line-height: 1;
@@ -336,4 +330,56 @@
     transition: all 0.3s ease 0s;
     cursor: pointer;
     text-transform: uppercase;
+}
+
+//adaptive
+
+@media all and (max-width: 426px){
+    .lorem{
+        width: 100% !important;
+        margin: 0px !important;
+    }
+    .Btn{
+        display: flex;
+        flex-direction: row ;
+    }
+    .pdf{
+        height: auto;
+    }
+    .photoArea{
+        width: 100%;
+    }
+    .picture{
+        background-size: cover;
+    }
+    
+    .globally{
+        font-size: 10px;
+    }
+    .select{
+        font-size: 25px;
+    }
+    .all{
+        flex-direction: column;
+    }
+    .yellowBtn{
+        margin: 0px 0px 10px;
+    }
+    .rightPage{
+        text-align: center;
+    }
+    .pdf{
+        margin-top: 0%;
+        padding: 0%;
+    }
+    .register{
+        margin: 0px;
+        padding: 0%;
+    }
+}
+
+@media all and (max-width: 321px){
+    .text{
+        display: none;
+    }
 }

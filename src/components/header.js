@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import variables from "../../styles/variables.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import burger from '../../src/components/burger'
+import Burger from '../components/burger';
 
 //MUI
 import Box from "@mui/material/Box";
@@ -18,6 +18,8 @@ import { storageGetItem } from "@/utils/storage";
 
 export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
+
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,15 +76,9 @@ export default function Header() {
   return (
     
     <div>
-            <div className='max-w-full h-12 flex justify-start items-center bg-black mb-4 text-white rounded-md '>
-            <div className='flex md:hidden'><burger /></div>
-            <div className='hidden md:flex'>
-                gkgajkl
-            </div>
-        </div>
       <div
         className={variables.navbar}
-
+        
         id={`${isSticky ? variables.sticky : ""}`}>
           <div className={variables.logo_pic_div}>
 
@@ -92,6 +88,43 @@ export default function Header() {
 
           <a className={variables.logo}>Кайнар</a>
         </Link>
+          {/* <Burger/> */}
+        
+        <div className={variables.nav_btns_icons}>
+        <ul className={variables.ul}>
+          <li>
+            <Link href="/pets/PetList" legacyBehavior>
+              <Image src='/icons/petsnav.png' width={30} height={30} className={variables.a_icons}></Image>
+            </Link>
+          </li>
+          <li>
+            <Link href="/" legacyBehavior>
+              <Image src='/icons/home.png' width={30} height={30} className={variables.a_icons}></Image>
+            </Link>
+          </li>
+          <li>
+            <Link href="/about" legacyBehavior>
+            <Image src='/icons/about.png' width={30} height={30} className={variables.a_icons}></Image>
+            </Link>
+          </li>
+          <li>
+            <Link href="/contact" legacyBehavior>
+              <Image src='/icons/contact.png' width={30} height={30} className={variables.a_icons}></Image>
+            </Link>
+          </li>
+          <li>
+            <Link href="/valonters" legacyBehavior>
+               <Image src='/icons/vol.png' width={30} height={30} className={variables.a_icons}></Image>
+            </Link>
+          </li>
+          <li>
+            <Link href="/blog" legacyBehavior>
+            <Image src='/icons/news.png' width={30} height={30} className={variables.a_icons}></Image>
+            </Link>
+          </li>
+          </ul>
+          </div>
+          <div className={variables.nav_btns}>
         <ul className={variables.ul}>
           <li>
             <Link href="/pets/PetList" legacyBehavior>
@@ -145,7 +178,7 @@ export default function Header() {
                 }}
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
-              >
+                >
                 {currentUser ? (
                   <>
                     <MenuItem onClick={handleCloseUserMenu}>
@@ -157,7 +190,7 @@ export default function Header() {
                       <Typography
                         textAlign="center"
                         onClick={() => router.push("/favorite")}
-                      >
+                        >
                         Favorites
                       </Typography>
                     </MenuItem>
@@ -166,7 +199,7 @@ export default function Header() {
                         <Typography
                           textAlign="center"
                           onClick={() => router.push("/pets/AddPet")}
-                        >
+                          >
                           AddPet
                         </Typography>
                       </MenuItem>
@@ -178,16 +211,18 @@ export default function Header() {
                       <Typography
                         textAlign="center"
                         onClick={() => router.push(setting.path)}
-                      >
+                        >
                         {setting.type}
                       </Typography>
                     </MenuItem>
                   ))
-                )}
+                  )}
               </Menu>
             </Box>
           </li>
         </ul>
+        </div>
+
       </div>
       <div className="banner"></div>
     </div>

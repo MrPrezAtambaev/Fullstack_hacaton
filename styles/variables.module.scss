@@ -54,6 +54,7 @@ $color: #333;
     // background-color: aliceblue;
     width: 128px;
     height: 128px;
+    margin-top: 10px;
     // left: 0%;
 }
 
@@ -97,6 +98,18 @@ $color: #333;
     }
 }
 
+.a_icons{
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: 0.6s;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+
+
 // .a:hover{
 //     cursor: pointer;
 //     color: #c6c6ca;
@@ -104,6 +117,7 @@ $color: #333;
 
 
 .banner{
+    display: none;
     position: relative;
     width: 100%;
     height: 565.5px;
@@ -125,9 +139,17 @@ $color: #333;
 
 ///Adaptive
 
+
+@media all and (max-width: 1980px){
+    .nav_btns_icons{
+        display: none;
+    }
+}
+    
 @media all and (max-width: 1024px){
 
-    .navbar{
+
+   .navbar{
         height: 100px;
     }
     .a{
@@ -149,16 +171,62 @@ $color: #333;
         height: 100px;
     }
     .a{
-        font-size: 14px;
+        font-size: 12px;
         margin: 0px 10px;
     }
     .logo{
-        font-size: 25px;
+        font-size: 20px;
         padding-left: 5%;
     }
     .logo_pic{
-        width: 80px;
-        height: 80px;
+        width: 75px;
+        height: 75px;
         margin-left: 5%;   
+    }
+}
+
+@media all and (max-width: 426px){
+    .nav_btns_icons{
+        display: block;
+        width: auto;
+    }
+    .nav_btns{
+        display: none;
+    }
+    .logo{
+        display: none;
+    }
+    .logo_pic{
+        width: 70px;
+        height: 70px;
+        margin-left: 5%;   
+    }
+    .a_icons{
+        width: 25px;
+        height: 25px;
+    }
+
+}
+
+@media all and (max-width: 376px){
+    .logo_pic{
+        width: 50px;
+        height: 50px;
+    }
+    .a_icons{
+        width: 23px;
+        height: 23px;
+        margin: 0px 10px;
+    }
+}
+@media all and (max-width: 321px){
+    .logo_pic{
+        width: 50px;
+        height: 50px;
+    }
+    .a_icons{
+        width: 20px;
+        height: 20px;
+
     }
 }
