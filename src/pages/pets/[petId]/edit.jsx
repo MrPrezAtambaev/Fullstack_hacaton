@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import { usePets } from "@/context/petsContext";
-import add from '../../../../styles/addpet.module.scss';
-import variables from '../../../../styles/variables.module.scss';
+import add from "../../../../styles/addpet.module.scss";
+import variables from "../../../../styles/variables.module.scss";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { authAxios } from "@/utils/authAxios";
@@ -130,50 +130,51 @@ const EditPet = () => {
 
   return (
     <>
-            <div className={variables.banner}>
-          <div className={add.add}>
-            <h1 className={add.add_text}>Edit Pet Data</h1>
-            <p className={add.aboutLinks}>
-              <Link href="/" legacyBehavior>
-                <a className={add.home}>Home</a>
-              </Link>
-              <ArrowForwardIcon className={add.icon} />
-              <Link href="/" legacyBehavior>
-                <a className={add.about}>Add Pet</a>
-              </Link>
-            </p>
-          </div>
+      <div className={variables.banner}>
+        <div className={add.add}>
+          <h1 className={add.add_text}>Edit Pet Data</h1>
+          <p className={add.aboutLinks}>
+            <Link href="/" legacyBehavior>
+              <a className={add.home}>Home</a>
+            </Link>
+            <ArrowForwardIcon className={add.icon} />
+            <Link href="/" legacyBehavior>
+              <a className={add.about}>Add Pet</a>
+            </Link>
+          </p>
         </div>
-    <form onSubmit={handleSubmit}>
-      <h2 style={{ marginBottom: "30px" }}>Edit Pet</h2>
-      <input type="text" name="name" onChange={handleInp} value={pet.name} />
-      <input
-        type="file"
-        accept="image/*"
-        name="image"
-        onChange={handleImageInp}
-      />
-      <input
-        type="text"
-        name="description"
-        onChange={handleInp}
-        value={pet.description}
-      />
-      <input type="number" name="age" onChange={handleInp} value={pet.age} />
-      <input
-        type="text"
-        name="gender"
-        onChange={handleInp}
-        value={pet.gender}
-      />
-      <input
-        type="text"
-        name="category"
-        onChange={handleInp}
-        value={pet.category}
-      />
-      <button type="submit">Save changes</button>
-    </form>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <h2 style={{ marginBottom: "30px" }}>Edit Pet</h2>
+        <input type="text" name="name" onChange={handleInp} value={pet.name} />
+        <input
+          type="file"
+          accept="image/*"
+          name="image"
+          onChange={handleImageInp}
+        />
+        <input
+          type="text"
+          name="description"
+          onChange={handleInp}
+          value={pet.description}
+        />
+        <input type="number" name="age" onChange={handleInp} value={pet.age} />
+        <input
+          type="text"
+          name="gender"
+          onChange={handleInp}
+          value={pet.gender}
+        />
+        <input
+          type="text"
+          name="category"
+          onChange={handleInp}
+          value={pet.category}
+        />
+        <button type="submit">Save changes</button>
+      </form>
+    </>
   );
 };
 
