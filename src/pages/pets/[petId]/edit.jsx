@@ -143,38 +143,38 @@ const EditPet = () => {
             </Link>
           </p>
         </div>
-    <form onSubmit={handleSubmit}>
-      <h2 style={{ marginBottom: "30px" }}>Edit Pet</h2>
-      <input type="text" name="name" onChange={handleInp} value={pet.name} />
-      <input
-        type="file"
-        accept="image/*"
-        name="image"
-        onChange={handleImageInp}
-      />
-      <input
-        type="text"
-        name="description"
-        onChange={handleInp}
-        value={pet.description}
-      />
-      <input type="number" name="age" onChange={handleInp} value={pet.age} />
-      <input
-        type="text"
-        name="gender"
-        onChange={handleInp}
-        value={pet.gender}
-      />
-      <input
-        type="text"
-        name="category"
-        onChange={handleInp}
-        value={pet.category}
-      />
-      <button type="submit">Save changes</button>
-    </form>
-
-  </>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <h2 style={{ marginBottom: "30px" }}>Edit Pet</h2>
+        <input type="text" name="name" onChange={handleInp} value={pet.name} />
+        <input
+          type="file"
+          accept="image/*"
+          name="image"
+          onChange={handleImageInp}
+        />
+        <input
+          type="text"
+          name="description"
+          onChange={handleInp}
+          value={pet.description}
+        />
+        <input type="number" name="age" onChange={handleInp} value={pet.age} />
+        <input
+          type="text"
+          name="gender"
+          onChange={handleInp}
+          value={pet.gender}
+        />
+        <input
+          type="text"
+          name="category"
+          onChange={handleInp}
+          value={pet.category}
+        />
+        <button type="submit">Save changes</button>
+      </form>
+    </>
   );
 };
 
