@@ -1,14 +1,14 @@
 import Link from "next/link";
 import about from "../../styles/about.module.scss";
-import variables from "../../styles/variables.module.scss";
+import home from "../../styles/homepage.module.scss";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function Blog() {
   return (
-    <div className={variables.banner}>
+    <div className={home.banner}>
       <div className={about.text}>
         <div className={about.aboutContent}>
-          <h1 className={about.aboutText}>About Us</h1>
+          <h1 className={about.aboutText}>Blog</h1>
           <p className={about.aboutLinks}>
             <Link href="/" legacyBehavior>
               <a className={about.home}>Home</a>
@@ -18,6 +18,7 @@ export default function Blog() {
               <a className={about.about}>Blog</a>
             </Link>
           </p>
+          <img></img>
         </div>
       </div>
     </div>

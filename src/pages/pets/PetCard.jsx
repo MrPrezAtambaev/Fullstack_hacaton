@@ -21,6 +21,8 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import SettingsIcon from '@mui/icons-material/Settings';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 //other icons
 import gender from '../../../public/icons/gender.png'
@@ -150,7 +152,7 @@ const PetCard = ({ item }) => {
           className={pet.card_img}
           key={image.id}
           src={image.image}
-          alt={image.name}
+          // alt={image.name}
 
           />
           ))}
@@ -176,6 +178,7 @@ const PetCard = ({ item }) => {
           />
              {item.likes_count}
           </div>
+          
         )}
         {item.owner === currentUser.email ? (
           <>
@@ -185,6 +188,8 @@ const PetCard = ({ item }) => {
             <>
             <DeleteIcon  onClick={() => deletePet(item.id)}/>
             </>
+            <FavoriteIcon onClick={() => addFavorites(item.id)}/>
+            <FavoriteBorderIcon onClick={() => deleteFavorites(item.id)}/>
           </>
         ) : null}
 
@@ -221,6 +226,7 @@ const PetCard = ({ item }) => {
                                 <p className={modal.commentP}><img src="/icons/user.png"/>: {comment.owner}</p>
                                 <p className={modal.commentP}><img src="/icons/comm.png"/>: {comment.body}</p>
                                 <p className={modal.commentP}><img src="/icons/clock.png"/>: {comment.created_at}</p>
+                                <DeleteIcon onClick={() => deleteComment(comment.id)}/>
                               </div>
                             ))}
                     </div>
@@ -229,11 +235,8 @@ const PetCard = ({ item }) => {
                   </Box>
                 </Modal>
             </div>
-          <div>
-            <button onClick={() => addFavorites(item.id)}>Add Fav</button>
-            <button onClick={() => deleteFavorites(item.id)}>Delete Fav</button>
-          </div>
         </div>
+      </div>
       </div>
     </>
   );

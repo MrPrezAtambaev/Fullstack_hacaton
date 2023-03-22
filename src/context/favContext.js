@@ -12,11 +12,11 @@ const FavContextProvider = ({ children }) => {
     try {
       let { data } = await authAxios("/feedback/favorite/");
       setFavorites(data.results);
-      console.log(data.results);
+
       favoriteIds = data.results.map((favorite) => favorite.id);
-      console.log(favoriteIds);
+
     } catch (e) {
-      console.log(e);
+  
     }
   };
 
@@ -26,12 +26,12 @@ const FavContextProvider = ({ children }) => {
       formData.append("post", petId);
 
       let { data } = await authAxios.post("/feedback/favorite/", formData);
-      console.log(data);
+  
       favoriteIds.push(data.id);
-      console.log(favoriteIds);
+
       getFavorites();
     } catch (e) {
-      console.log(e);
+
     }
   };
 
@@ -43,16 +43,16 @@ const FavContextProvider = ({ children }) => {
       }
 
       let favObj = favorites.find((item) => item.post === petId);
-      console.log(favObj);
+
 
       // Send a DELETE request to the API with the favorite id
       let { data } = await authAxios.delete(`/feedback/favorite/${favObj.id}/`);
-      console.log(data);
+
 
       // Remove the deleted favorite from the favorites array
       getFavorites(petId);
     } catch (e) {
-      console.log(e);
+
     }
   };
 
