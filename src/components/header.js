@@ -78,7 +78,13 @@ export default function Header() {
         id={`${isSticky ? variables.sticky : ""}`}
       >
         <div className={variables.logo_pic_div}>
-          <Image src="/icons/5.png" className={variables.logo_pic} alt="" />
+          <Image
+            src="/icons/5.png"
+            width="85"
+            height="85"
+            className={variables.logo_pic}
+            alt=""
+          />
         </div>
         <Link href="/" legacyBehavior>
           <a className={variables.logo}>Кайнар</a>

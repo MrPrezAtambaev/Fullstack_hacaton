@@ -160,11 +160,16 @@ const PetCard = ({ item }) => {
             </h6>
             {/* <div className={pet.vl}></div> */}
             <h6 style={{ color: "black" }} className={pet.h6_second}>
-              <Image src="/icons/gender.png" width={24} height={24} alt="" />{" "}
+              <Image
+                src="/icons/gender.png"
+                width={"24"}
+                height={"24"}
+                alt=""
+              />{" "}
               {item.gender}
             </h6>
             <h6 style={{ color: "black" }}>
-              <Image src="/icons/pets.png" width={24} height={24} alt="" />{" "}
+              <Image src="/icons/pets.png" width={"24"} height={"24"} alt="" />{" "}
               {item.category}
             </h6>
           </div>
