@@ -145,7 +145,7 @@ const EditPet = () => {
         </div>
       </div>
       <form onSubmit={handleSubmit}>
-        <h2 style={{ marginBottom: "30px" }}>Edit Pet</h2>
+        <h2 style={{ marginBottom: "60px" }}>Edit Pet</h2>
         <input type="text" name="name" onChange={handleInp} value={pet.name} />
         <input
           type="file"

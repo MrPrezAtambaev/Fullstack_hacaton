@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { usePets } from "@/context/petsContext";
 import add from "../../../styles/addpet.module.scss";
-import variables from "../../../styles/variables.module.scss";
+import home from "../../../styles/homepage.module.scss";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
@@ -40,7 +40,7 @@ const AddPet = () => {
 
   return (
     <>
-      <div className={variables.banner}>
+      <div className={home.banner}>
         <div className={add.add}>
           <h1 className={add.add_text}>Add Pet</h1>
           <p className={add.aboutLinks}>
@@ -54,42 +54,44 @@ const AddPet = () => {
           </p>
         </div>
       </div>
-      <div>
-        <h2 style={{ marginBottom: "30px" }}>Add Pet</h2>
+      <div className={add.container}>
+        <h2 className={add.h2} style={{ marginBottom: "30px" }}>Add Pet</h2>
+        <div className={add.input_group}>
+
         <input
+        className={add.input}
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-        />
+          />
         <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setImages([...images, ...e.target.files])}
-          multiple
-        />
-        <input
+        className={add.input}
           type="number"
           placeholder="Age"
           value={age}
           onChange={(e) => setAge(e.target.value)}
-        />
+          />
         <input
-          type="text"
-          placeholder="Description"
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
+        className={add.input}
+        type="text"
+        placeholder="Description"
+        value={desc}
+        onChange={(e) => setDesc(e.target.value)}
         />
+            </div>
+        <div className={add.select_div}>
         <div>
           <label>
             Gender:
             <select
+            className={add.select}
               value={gender}
               onChange={(e) => {
                 setGender(e.target.value);
               }}
             >
-              <option value="">Select Gender</option>
+              <option className={add.first} value="">Select Gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
@@ -99,18 +101,28 @@ const AddPet = () => {
           <label>
             Category:
             <select
+            className={add.select}
               value={category}
               onChange={(e) => {
                 setCategory(e.target.value);
               }}
             >
-              <option value="">Select Category</option>
-              <option value="cats">Cat</option>
-              <option value="dogs">Dog</option>
+              <option className={add.first} value="">Select Category</option>
+              <option className={add.option} value="cats">Cat</option>
+              <option className={add.option} value="dogs">Dog</option>
             </select>
           </label>
         </div>
-        <button onClick={() => handleSave()}>Save</button>
+
+        </div>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setImages([...images, ...e.target.files])}
+          multiple
+          
+          />
+        <button className={add.save_btn}   onClick={() => handleSave()}>Save</button>
         {/* Pass the post ID to the handleSave function */}
       </div>
     </>
